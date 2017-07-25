@@ -1,0 +1,67 @@
+# Utility
+alias reload='source ~/.etc/bash/aliases && source ~/.etc/env/vars'
+alias ea='nvim ~/.etc/bash/aliases && reload'   # Edit aliases
+alias ec='nvim ~/.etc/bash/config && reload'    # Edit config
+alias ef='nvim ~/.etc/bash/functions && reload' # Edit functions
+alias ev='nvim ~/.etc/env/vars && reload'       # Edit environments variables
+alias vim='nvim'
+
+# List
+alias ls='ls -lahG'
+
+# Quicker cd
+alias c='cd'
+
+# Projects
+alias code='cd ~/Jobs/Code'
+alias labs='cd ~/Labs'
+
+# Git
+alias ungit="rm -rf .git"
+alias gl='git log --raw'
+alias glp='git log --pretty=oneline'
+alias gca='git commit -v -a'
+alias gcm='git commit -m'
+alias ga='git add --all'
+alias gd='git diff --color'
+alias gdc='git diff --color --cached'
+alias gdm='git diff master'
+alias gpl='git pull'
+alias gps='git push'
+alias gpr='git pull --rebase'
+alias gpm='git push origin master'
+alias gs='git status'
+alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
+alias ?='git status'
+alias eg='nvim .git/config'
+alias gbpurge='git fetch -p && git branch --merged | grep -v "\*" | grep -v "master" | grep -v "develop" | grep -v "staging" | xargs -n 1 git branch -d'
+
+# Rails any version
+alias tld='tail -f log/development.log'
+alias tlt='tail -f log/test.log'
+alias tlp='tail -f log/production.log'
+alias tl='tail -f log/*.log'
+
+# Migrations
+alias migrate='bundle exec rake db:migrate db:test:load'
+alias bx='bundle exec'
+
+# Misc
+alias tlsys='tail -f /var/log/system.log'
+alias rmasl='sudo rm -rf /private/var/log/asl/*'
+alias o='open . &'
+alias ff='open -a Firefox'
+alias up='foreman start'
+alias simpleserver='php -S localhost:9999'
+
+# pow.cx
+alias rspow='touch ~/.pow/restart.txt'
+
+# docker
+alias start-docker='eval $(docker-machine env dev)'
+
+# tmuxinator
+alias mux='tmuxinator'
+
+# Hanami
+alias h='bundle exec hanami'

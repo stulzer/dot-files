@@ -1,0 +1,124 @@
+# clear the ps1
+function ps1 {
+  PS1="\[$ESC[${DULL};${FG_GREEN}m\]\n\u:\[$ESC[${DULL};${FG_YELLOW}m\]$1 \$ \[$ESC[${DULL};${FG_WHITE};${BG_NULL}m\]"
+}
+
+rename_numerically () {
+  a=1
+  for i in *.jpg; do
+    new=$(printf "%01d.jpg" "$a") #04 pad to length of 4
+    mv -- "$i" "$new"
+    let a=a+1
+  done
+}
+
+# ssh autocomplete
+_complete_ssh_hosts () {
+  COMPREPLY=()
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  comp_ssh_hosts=`cat ~/.ssh/known_hosts | \
+                  cut -f 1 -d ' ' | \
+                  sed -e s/,.*//g | \
+                  grep -v ^# | \
+                  uniq | \
+                  grep -v "\[" ;
+                  cat ~/.ssh/config | \
+                  grep "^Host " | \
+                  awk '{print $2}'`
+  COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
+  return 0
+}
+
+complete -F _complete_ssh_hosts ssh
+
+# Rails 4.0 binstubs
+function check_binstubs() {
+  # detecting rails & rake
+  if [ -e bin/rails ]
+    then
+    alias r='./bin/rails'
+    alias rake='./bin/rake'
+  else
+    alias r='bundle exec rails'
+    alias rake='bundle exec rake'
+  fi
+
+  # detect rspec
+  if [ -e bin/rspec ]
+    then
+    alias rspec='./bin/rspec'
+  else
+    alias rspec='bundle exec rspec'
+  fi
+
+  # detect guard
+  if [ -e bin/guard ]
+    then
+    alias guard='./bin/guard'
+  else
+    alias guard='bundle exec guard'
+  fi
+}
+
+check_binstubs;
+
+function cd() { builtin cd "$@" && check_binstubs; }
+
+# RAILS
+function rails_app() {
+  rails new $1 -d postgresql -Tm https://github.com/stulzer/rails-template/raw/master/template.rb
+}
+
+# quick display/hide dot files
+function display_dotfiles(){
+  defaults write com.apple.finder AppleShowAllFiles TRUE
+  killall Finder
+}
+
+function hide_dotfiles(){
+  defaults write com.apple.finder AppleShowAllFiles FALSE
+  killall Finder
+}
+
+function zipr() {
+  zip -r $1.zip $1
+}
+
+function sf(){
+  open -a Safari http://$1
+}
+
+function tarc(){
+  tar -czvf $1 $2
+}
+
+function tarx(){
+  tar -xzvf $1 $2
+}
+
+function dev() {
+  open http://$(basename $PWD).dev/
+}
+
+# heroku
+function opro() {
+  heroku open --app $(basename $PWD)-production
+}
+
+function osta() {
+  heroku open --app $(basename $PWD)-staging
+}
+
+# Usage: changes d038ff1 5d7f017
+function changes() {
+  git log $1..$2 --oneline --pretty=format:'%s' --no-merges
+}
+
+function hl() {
+  if [ -z "$2" ]
+    then src="pbpaste"
+  else
+    src="cat $2"
+  fi
+  $src | highlight -O rtf --syntax $1 --font Inconsolata --font-size 24 | pbcopy
+}

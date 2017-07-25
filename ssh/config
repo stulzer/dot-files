@@ -1,0 +1,17 @@
+# Private-key example
+# IdentityFile ~/.ssh/path-to-private-key
+
+# Server configs example
+
+# example.com
+# Host example
+# Hostname 192.168.666.333
+# User deployer
+
+# Private-key example
+# Host example
+# Hostname 192.168.666.333
+# IdentityFile ~/.ssh/path-to-private-key
+
+Host *
+UseKeychain yes
