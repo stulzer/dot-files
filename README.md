@@ -50,6 +50,11 @@ open https://github.com/junegunn/vim-plug#neovim
 brew install python
 ```
 
+#### Python 3
+```
+brew search python3
+```
+
 ### Pip
 ```
 sudo easy_install pip
