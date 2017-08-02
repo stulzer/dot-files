@@ -13,7 +13,7 @@ alias ls='ls -lahG'
 alias c='cd'
 
 # Projects
-alias code='cd ~/Jobs/Code'
+alias code='cd ~/Code'
 alias labs='cd ~/Labs'
 
 # Git
