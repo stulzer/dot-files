@@ -65,6 +65,7 @@ set wildignore+=build
 set wildignore+=.keep
 set wildignore+=.rspec
 set wildignore+=spec/cassettes/
+set wildignore+=*/tmp/*,*.so,**/*.swp
 
 " Ignore case when search
 set ignorecase
@@ -129,14 +130,10 @@ nmap <leader>P "+P
 vmap <leader>p "+p
 vmap <leader>P "+P
 
-" Detecting binstubs for rspec
-if filereadable("bin/rspec")
-  let g:vroom_use_binstubs = 1
-else
-  let g:vroom_use_binstubs = 0
-end
-
-let g:vroom_use_vimshell = 1
+" vim-vroom configuration
+let g:vroom_use_terminal = 1
+map <leader>s :VroomRunNearestTest<cr>
+map <leader>S :VroomRunTestFile<cr>
 
 " Trigger to run the whole RSpec suite
 function ClearScreenAndRunRSpec()
@@ -177,7 +174,7 @@ highlight NonText guifg=#143c46
 highlight SpecialKey guifg=#143c46
 
 " spell checker, Portuguese and English as default language
-set spelllang=pt,en_us
+set spelllang=en_us,pt,de
 set spell
 
 " fast nohighligth

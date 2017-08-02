@@ -17,7 +17,8 @@ alias code='cd ~/Code'
 alias labs='cd ~/Labs'
 
 # Git
-alias ungit="rm -rf .git"
+alias ungit='rm -rf .git'
+alias gb='git branch'
 alias gl='git log --raw'
 alias glp='git log --pretty=oneline'
 alias gca='git commit -v -a'
