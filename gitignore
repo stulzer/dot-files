@@ -27,3 +27,4 @@ config/database.yml
 /node_modules
 /.sass-cache
 build.gradle
+config/initializers/englishify.rb
