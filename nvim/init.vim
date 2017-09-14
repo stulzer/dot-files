@@ -147,7 +147,7 @@ function ClearScreenAndRunRSpec()
     :terminal npm run test
   else
     :sp<cr>
-    :terminal bundle exec rspec
+    :terminal bundle exec rspec && bundle exec rubocop && bundle exec rails_best_practices
   end
 endfunction
 map <leader>R :call ClearScreenAndRunRSpec()<cr>
