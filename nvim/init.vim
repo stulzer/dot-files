@@ -14,7 +14,7 @@ Plug 'neomake/neomake'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
-Plug 'skalnik/vim-vroom'
+Plug 'stulzer/vim-vroom'
 Plug 'stulzer/colorschemes'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -26,6 +26,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Enter-Indent'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'kchmck/vim-coffee-script'
 
 call plug#end()
 
