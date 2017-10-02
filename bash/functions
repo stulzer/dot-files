@@ -122,3 +122,10 @@ function hl() {
   fi
   $src | highlight -O rtf --syntax $1 --font Inconsolata --font-size 24 | pbcopy
 }
+
+# Run RSpec on each last commit based on the number of commits you pass as argument
+function rspec_last_commits() {
+  current_branch="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/')"
+  for hash in $(git log -$1 --pretty=format:"%h"); do git checkout $hash && bundle exec rspec; done
+  git checkout $current_branch
+}
