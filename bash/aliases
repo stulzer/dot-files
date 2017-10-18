@@ -37,6 +37,7 @@ alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
 alias ?='git status'
 alias eg='nvim .git/config'
 alias gbpurge='git fetch -p && git branch --merged | grep -v "\*" | grep -v "master" | grep -v "develop" | grep -v "staging" | xargs -n 1 git branch -d'
+alias updateall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.git --work-tree=$PWD/{} pull origin master --rebase \;'
 
 # Rails any version
 alias tld='tail -f log/development.log'
@@ -69,3 +70,6 @@ alias mux='tmuxinator'
 
 # Hanami
 alias h='bundle exec hanami'
+
+# mailhog
+alias mailhog='docker run -p 1025:1025 -p 8025:8025 mailhog/mailhog'
