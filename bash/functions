@@ -129,3 +129,9 @@ function rspec_last_commits() {
   for hash in $(git log -$1 --pretty=format:"%h"); do git checkout $hash && bundle exec rspec; done
   git checkout $current_branch
 }
+
+function rr_last_commits() {
+  current_branch="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/')"
+  for hash in $(git log -$1 --pretty=format:"%h"); do git checkout $hash && bundle exec rspec && bundle exec rubocop; done
+  git checkout $current_branch
+}
