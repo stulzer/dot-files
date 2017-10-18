@@ -3,6 +3,9 @@ export EDITOR=nvim
 export PATH="$HOME/.rbenv/bin:$homebrew:$PATH"
 export PATH="/usr/local/share/npm/bin:${PATH}"
 export PATH="/usr/local/heroku/bin:$PATH"
+export GOPATH=$HOME/Code/gocode
+export PATH=$PATH:$GOPATH/bin
+export GPG_TTY=$(tty)
 eval "$(rbenv init -)"
 
 export NVM_DIR="$HOME/.nvm"
