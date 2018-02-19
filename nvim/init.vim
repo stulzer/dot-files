@@ -143,6 +143,9 @@ function ClearScreenAndRunRSpec()
   if filereadable("bin/rspec")
     :sp<cr>
     :terminal ./bin/rspec && bundle exec rubocop && bundle exec rails_best_practices
+  elseif filereadable("Gemfile") && filereadable("package.json")
+    :sp<cr>
+    :terminal bundle exec rspec && bundle exec rubocop && bundle exec rails_best_practices
   elseif filereadable("package.json")
     :sp<cr>
     :terminal npm run test
@@ -160,7 +163,8 @@ autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,ftl set ai sw=2 sts=2 et
 autocmd FileType python set sw=4 sts=4 et
 
-autocmd! BufRead,BufNewFile *.sass setfiletype sass
+au BufRead,BufNewFile *.ejs set filetype=html
+autocmd! BufRead,BufNewFile *.sass set filetype=sass
 
 " Set line break
 set linebreak
@@ -187,9 +191,9 @@ map <leader>l :set list!<cr>
 map <leader>nd :!node %<cr>
 " Mapping for quick js/less/scss folding
 nmap <leader>f vi{zf
-" Execute test unit
-map <leader>u :!clear && bundle exec rake test TEST=%<cr>
-map <leader>U :!clear && bundle exec rake<cr>
+" Execute rubocop
+map <leader>u :sp<cr>:terminal bundle exec rubocop<cr>
+map <leader>U :sp<cr>:terminal bundle exec rubocop -a<cr>
 " Execute grunt test
 nmap <leader>g :!clear && npm test<cr>
 
@@ -263,6 +267,7 @@ map <leader>cR :call ShowRoutes()<cr>
 map <leader>cv :CtrlPClearCache<cr>\|:CtrlP app/views<cr>
 map <leader>ct :CtrlPClearCache<cr>\|:CtrlP app/controllers<cr>
 map <leader>cm :CtrlPClearCache<cr>\|:CtrlP app/models<cr>
+map <leader>cp :CtrlPClearCache<cr>\|:CtrlP app/presenters<cr>
 map <leader>cs :CtrlPClearCache<cr>\|:CtrlP spec<cr>
 map <leader>cl :CtrlPClearCache<cr>\|:CtrlP lib<cr>
 map <leader>cc :sp config/application.yml<cr>
@@ -384,9 +389,6 @@ function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
 
-au BufRead,BufNewFile *.ejs set filetype=html
-au BufRead,BufNewFile *.ftl setfiletype html
-
 " nvim air-line
 let g:airline_powerline_fonts = 1
 let g:airline_theme='powerlineish'
@@ -416,3 +418,9 @@ inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" mjml as haml
+autocmd BufNewFile,BufReadPost *.mjml set filetype=haml
+
+" Remaps escape for terminal mode
+tnoremap <esc> <c-\><c-n>
