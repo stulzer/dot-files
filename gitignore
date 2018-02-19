@@ -20,6 +20,7 @@ public/uploads/
 config/database.yml
 *.swp
 *.swo
+*.swn
 .ruby-version
 .nvmrc
 .DS_Store

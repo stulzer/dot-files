@@ -135,3 +135,8 @@ function rr_last_commits() {
   for hash in $(git log -$1 --pretty=format:"%h"); do git checkout $hash && bundle exec rspec && bundle exec rubocop; done
   git checkout $current_branch
 }
+
+# kill all process with the grepped pattern
+function kill_em_all() {
+  ps -fax | grep -v grep | grep $1 | awk '{print $2}' | xargs kill -9
+}
