@@ -5,6 +5,7 @@ alias ec='nvim ~/.etc/bash/config && reload'    # Edit config
 alias ef='nvim ~/.etc/bash/functions && reload' # Edit functions
 alias ev='nvim ~/.etc/env/vars && reload'       # Edit environments variables
 alias vim='nvim'
+alias vimconf='nvim ~/.etc/nvim/init.vim'
 alias v='nvim'
 
 # List
@@ -33,11 +34,13 @@ alias gps='git push'
 alias gpr='git pull --rebase'
 alias gpm='git push origin master'
 alias gs='git status'
+alias gcn!='git commit --amend --no-edit'
 alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
 alias ?='git status'
 alias eg='nvim .git/config'
 alias gbpurge='git fetch -p && git branch --merged | grep -v "\*" | grep -v "master" | grep -v "develop" | grep -v "staging" | xargs -n 1 git branch -d'
 alias updateall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.git --work-tree=$PWD/{} pull origin master --rebase \;'
+alias whodid='git shortlog --summary --numbered'
 
 # Rails any version
 alias tld='tail -f log/development.log'
@@ -48,7 +51,7 @@ alias tl='tail -f log/*.log'
 # Migrations
 alias migrate='bundle exec rake db:migrate db:test:load'
 alias bx='bundle exec'
-alias testit='bundle exec rspec && bundle exec rubocop && bundle exec rails_best_practices'
+alias tes='bundle exec rspec && bundle exec rubocop && bundle exec rails_best_practices'
 
 # Misc
 alias tlsys='tail -f /var/log/system.log'
