@@ -51,7 +51,7 @@ alias tl='tail -f log/*.log'
 # Migrations
 alias migrate='bundle exec rake db:migrate db:test:load'
 alias bx='bundle exec'
-alias tes='bundle exec rspec && bundle exec rubocop && bundle exec rails_best_practices'
+alias tes='bundle exec rspec && bundle exec rubocop && bundle exec rails_best_practices && bundle-audit update && bundle-audit check'
 
 # Misc
 alias tlsys='tail -f /var/log/system.log'
