@@ -8,6 +8,7 @@ pip install --user git+git://github.com/Lokaltog/powerline
 ECHO 'Cloning dot files'
 git clone https://github.com/stulzer/dot-files ~/.etc/
 ECHO 'Creating and symlinking configurations'
+cd ~
 mkdir .ssh .secrets .config .config/nvim
 touch ~/.secrets/vars
 ln -s ~/.secrets/vars ~/.etc/env/vars
