@@ -140,7 +140,10 @@ map <leader>S :VroomRunTestFile<cr>
 " Trigger to run the whole RSpec suite
 function ClearScreenAndRunRSpec()
   :silent !clear
-  if filereadable("bin/rspec")
+  if filereadable("Dockerfile")
+    :sp<cr>
+    :terminal docker-compose run web bundle exec rspec && docker-compose run web bundle exec rubocop
+  elseif filereadable("bin/rspec")
     :sp<cr>
     :terminal ./bin/rspec && bundle exec rubocop && bundle exec rails_best_practices
   elseif filereadable("Gemfile") && filereadable("package.json")
