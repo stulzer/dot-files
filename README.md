@@ -8,12 +8,8 @@ https://github.com/powerline/fonts/tree/master/Inconsolata
 #### brew
 http://brew.sh/
 
-#### rbenv
-https://github.com/rbenv/rbenv
-
 #### Install Neovim Minimalist Plugin
 https://github.com/junegunn/vim-plug#neovim
-
 
 #### Install everything
 ```
