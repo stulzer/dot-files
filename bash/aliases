@@ -58,7 +58,7 @@ alias tlsys='tail -f /var/log/system.log'
 alias rmasl='sudo rm -rf /private/var/log/asl/*'
 alias o='open .'
 alias ff='open -a Firefox'
-alias up='foreman start'
+alias up='docker-compose stop && rm tmp/pids/server.pid; docker-compose build web && docker-compose run web rails db:drop db:create db:schema:load db:seed && docker-compose up -d'
 alias simpleserver='php -S localhost:9999'
 alias rubocop='bundle exec rubocop'
 
