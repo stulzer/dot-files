@@ -111,7 +111,7 @@ function osta() {
 
 # Usage: changes d038ff1 5d7f017
 function changes() {
-  git log $1..$2 --oneline --pretty=format:'%s' --no-merges
+  git log $1..$2 --pretty=format:'*%s*%n%b' --no-merges
 }
 
 function hl() {
