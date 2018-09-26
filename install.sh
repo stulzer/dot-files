@@ -1,5 +1,5 @@
 ECHO 'Installing dependencies through brew'
-brew install git node nvm tmux reattach-to-user-namespace neovim ripgrep python python@2 heroku rbenv ruby-build
+brew install git node nvm tmux reattach-to-user-namespace neovim ripgrep python python@2 heroku rbenv ruby-build fzf
 ECHO 'Installing pip through easy install'
 ECHO 'Type your password when asked'
 sudo easy_install pip
