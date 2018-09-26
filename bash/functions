@@ -51,7 +51,7 @@ function check_binstubs() {
   # detect rspec
   if [ -e Dockerfile ]
     then
-    alias rspec='docker-compose run web rspec'
+    alias rspec='docker-compose run web bundle exec rspec'
   elif [ -e bin/rspec ]
     then
     alias rspec='./bin/rspec'
