@@ -5,7 +5,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-rooter'
 Plug 'amadeus/vim-mjml'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'glanotte/vim-jasmine'
@@ -29,6 +28,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Enter-Indent'
+Plug '/usr/local/opt/fzf'
 
 call plug#end()
 
@@ -272,32 +272,20 @@ function! ShowRoutes()
 endfunction
 map <leader>cR :call ShowRoutes()<cr>
 
-" CtrlP mapings
-map <leader>cv :CtrlPClearCache<cr>\|:CtrlP app/views<cr>
-map <leader>ct :CtrlPClearCache<cr>\|:CtrlP app/controllers<cr>
-map <leader>cm :CtrlPClearCache<cr>\|:CtrlP app/models<cr>
-map <leader>cp :CtrlPClearCache<cr>\|:CtrlP app/presenters<cr>
-map <leader>cs :CtrlPClearCache<cr>\|:CtrlP spec<cr>
-map <leader>cl :CtrlPClearCache<cr>\|:CtrlP lib<cr>
+" FZF mapings
+nmap <C-p> :FZF<CR>
+map <leader>cv :FZF app/views<cr>
+map <leader>ct :FZF app/controllers<cr>
+map <leader>cm :FZF app/models<cr>
+map <leader>cp :FZF app/presenters<cr>
+map <leader>cs :FZF spec<cr>
+map <leader>cl :FZF lib<cr>
 map <leader>cc :sp config/application.yml<cr>
 map <leader>cr :topleft 100 :split config/routes.rb<cr>
 map <leader>cg :topleft 100 :split Gemfile<cr>
 
 " Alternate between last opened buffer
 nnoremap <leader><leader> <c-^>
-
-" Makes ctrlp FASTER THAN HELL
-let g:ctrlp_use_caching = 0
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-else
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-  let g:ctrlp_prompt_mappings = {
-        \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
-        \ }
-endif
 
 " End of line and First non-blank chracter of the line
 vnoremap H ^

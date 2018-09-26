@@ -27,3 +27,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 . ~/.etc/env/vars
 
 [[ -z "$TMUX" ]] && exec tmux
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
