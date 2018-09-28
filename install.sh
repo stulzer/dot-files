@@ -7,7 +7,7 @@ ECHO 'Installing powerline'
 pip install --user git+git://github.com/Lokaltog/powerline
 ECHO 'Installing ruby and making it global'
 rbenv install 2.5.1
-rben global 2.5.1
+rbenv global 2.5.1
 ECHO 'Installing neovim packages'
 gem install neovim
 pip2.7 install neovim
