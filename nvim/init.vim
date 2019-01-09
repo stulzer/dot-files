@@ -16,10 +16,12 @@ Plug 'leafgarland/typescript-vim'
 Plug 'neomake/neomake'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'slim-template/vim-slim'
 Plug 'stulzer/colorschemes'
 Plug 'stulzer/vim-vroom/'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
@@ -421,3 +423,6 @@ autocmd BufNewFile,BufReadPost *.mjml set filetype=haml
 
 " Remaps escape for terminal mode
 tnoremap <esc> <c-\><c-n>
+
+" Need to make devicons work properly
+set encoding=UTF-8
