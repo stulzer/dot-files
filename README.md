@@ -2,8 +2,8 @@
 
 ## Dependencies
 
-#### Powerline font
-https://github.com/powerline/fonts/tree/master/Inconsolata
+#### Inconsolata Nerd Font
+https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Inconsolata.zip
 
 #### brew
 http://brew.sh/

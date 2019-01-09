@@ -10,6 +10,7 @@ alias v='nvim'
 
 # List
 alias ls='ls -lahG'
+alias lc='colorls -la'
 
 # Quicker cd
 alias c='cd'
@@ -41,6 +42,7 @@ alias eg='nvim .git/config'
 alias gbpurge='git fetch -p && git branch --merged | grep -v "\*" | grep -v "master" | grep -v "develop" | grep -v "staging" | xargs -n 1 git branch -d'
 alias updateall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.git --work-tree=$PWD/{} pull origin master --rebase \;'
 alias whodid='git shortlog --summary --numbered'
+alias reekit='git diff master --name-only | xargs reek'
 
 # Rails any version
 alias tld='tail -f log/development.log'

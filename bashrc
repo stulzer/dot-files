@@ -17,6 +17,10 @@ export NVM_DIR="$HOME/.nvm"
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+### Improving fzf file search
+export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 . /usr/local/etc/bash_completion.d/git-completion.bash
 . /usr/local/etc/bash_completion.d/git-prompt.sh
 
@@ -25,6 +29,9 @@ export PATH="/usr/local/heroku/bin:$PATH"
 . ~/.etc/bash/functions
 . ~/.etc/bash/tmuxinator
 . ~/.etc/env/vars
+
+# colorls bash completion
+source $(dirname $(gem which colorls))/tab_complete.sh
 
 [[ -z "$TMUX" ]] && exec tmux
 

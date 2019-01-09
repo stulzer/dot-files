@@ -140,3 +140,11 @@ function rr_last_commits() {
 function kill_em_all() {
   ps -fax | grep -v grep | grep $1 | awk '{print $2}' | xargs kill -9
 }
+
+function ruby_version() {
+  if [ -e .ruby-version ]
+    then cat .ruby-version
+  else
+    rbenv global
+  fi
+}

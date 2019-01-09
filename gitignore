@@ -30,3 +30,6 @@ config/database.yml
 build.gradle
 config/initializers/englishify.rb
 .rspec
+
+.env.development.local
+.env.test.local
