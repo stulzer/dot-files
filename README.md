@@ -1,4 +1,6 @@
-# OSX Environment
+# Using with iTerm
+
+![Terminal Screenshot](https://raw.githubusercontent.com/stulzer/dot-files/master/screenshot.png)
 
 ## Dependencies
 
