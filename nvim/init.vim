@@ -4,6 +4,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-rooter'
+Plug 'altercation/vim-colors-solarized'
 Plug 'amadeus/vim-mjml'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir'
@@ -114,9 +115,13 @@ set shiftwidth=2
 set expandtab
 set pastetoggle=<F12>
 
-" colorscheme Tomorrow
+" colorscheme Heroku
 colorscheme heroku-terminal
 set background=dark
+
+" colorscheme Solarized
+" colorscheme solarized
+" set background=light
 
 " Mapping for tab manipulation
 map <leader>tt :tabnew<cr>
@@ -278,6 +283,7 @@ map <leader>cR :call ShowRoutes()<cr>
 nmap <C-p> :FZF<CR>
 map <leader>cv :FZF app/views<cr>
 map <leader>ct :FZF app/controllers<cr>
+map <leader>ci :FZF app/interactors<cr>
 map <leader>cm :FZF app/models<cr>
 map <leader>cp :FZF app/presenters<cr>
 map <leader>cs :FZF spec<cr>
