@@ -58,6 +58,22 @@ function check_binstubs() {
   else
     alias rspec='bundle exec rspec'
   fi
+
+  # reek
+  if [ -e Dockerfile ]
+    then
+    alias reek='docker-compose run web bundle exec reek'
+  else
+    alias rspec='bundle exec reek'
+  fi
+
+  # Rails Best Practices
+  if [ -e Dockerfile ]
+    then
+    alias rails_best_practices='docker-compose run web bundle exec rails_best_practices'
+  else
+    alias rails_best_practices='bundle exec rails_best_practices'
+  fi
 }
 
 check_binstubs;
