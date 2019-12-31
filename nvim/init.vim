@@ -17,10 +17,13 @@ Plug 'leafgarland/typescript-vim'
 Plug 'neomake/neomake'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'slim-template/vim-slim'
 Plug 'stulzer/heroku-colorscheme'
+Plug 'stulzer/mitormk-laser'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'stulzer/vim-vroom/'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-commentary'
@@ -115,13 +118,8 @@ set shiftwidth=2
 set expandtab
 set pastetoggle=<F12>
 
-" colorscheme Heroku
-colorscheme heroku-terminal
+colorscheme mitormk-laser
 set background=dark
-
-" colorscheme Solarized
-" colorscheme solarized
-" set background=light
 
 " Mapping for tab manipulation
 map <leader>tt :tabnew<cr>
