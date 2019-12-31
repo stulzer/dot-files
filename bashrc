@@ -9,6 +9,7 @@ export GPG_TTY=$(tty)
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 eval "$(rbenv init -)"
 
 export NVM_DIR="$HOME/.nvm"

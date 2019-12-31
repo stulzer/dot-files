@@ -142,14 +142,16 @@ vmap <leader>P "+P
 
 " vim-vroom configuration
 let g:vroom_use_terminal = 1
-let g:vroom_command_prefix="docker-compose run web"
+" if filereadable("Dockerfile") && filereadable("docker-compose.yml")
+"   let g:vroom_command_prefix="docker-compose run web"
+" end
 map <leader>s :VroomRunNearestTest<cr>
 map <leader>S :VroomRunTestFile<cr>
 
 " Trigger to run the whole RSpec suite
 function ClearScreenAndRunRSpec()
   :silent !clear
-  if filereadable("Dockerfile")
+  if filereadable("Dockerfile") && filereadable("docker-compose.yml")
     :sp<cr>
     :terminal docker-compose run web bundle exec rspec && docker-compose run web bundle exec rubocop
   elseif filereadable("bin/rspec")
@@ -409,9 +411,12 @@ nnoremap <leader>j :call JSONify()<cr>
 set mouse-=a
 
 " deoplete config
+let g:python_host_prog = "/usr/local/bin/python2"
+let g:python3_host_prog = "/usr/local/bin/python3"
 let g:deoplete#enable_at_startup = 1
 " disable autocomplete
 let g:deoplete#disable_auto_complete = 1
+
 if has("gui_running")
     inoremap <silent><expr><C-Space> deoplete#mappings#manual_complete()
 else

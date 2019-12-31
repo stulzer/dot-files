@@ -34,12 +34,7 @@ complete -F _complete_ssh_hosts ssh
 # Rails 4.0 binstubs
 function check_binstubs() {
   # detecting rails & rake
-  if [ -e Dockerfile ]
-    then
-    alias r='docker-compose run web rails'
-    alias rake='docker-compose run web rake'
-    alias bundle='docker-compose run web bundle'
-  elif [[ -e bin/rails && -e bin/rake ]]
+  if [[ -e bin/rails && -e bin/rake ]]
     then
     alias r='./bin/rails'
     alias rake='./bin/rake'
