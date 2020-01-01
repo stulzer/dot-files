@@ -23,6 +23,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'slim-template/vim-slim'
 Plug 'stulzer/heroku-colorscheme'
 Plug 'stulzer/mitormk-laser'
+Plug 'stulzer/vim-airline-themes'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'stulzer/vim-vroom/'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -32,7 +33,6 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/Enter-Indent'
 Plug '/usr/local/opt/fzf'
 
@@ -435,3 +435,6 @@ tnoremap <esc> <c-\><c-n>
 
 " Need to make devicons work properly
 set encoding=UTF-8
+
+" Airline theme
+let g:airline_theme='mitormk'
