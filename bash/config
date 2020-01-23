@@ -65,4 +65,4 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM=auto
 
-PS1="$BRIGHT_BLUE\w$BRIGHT_GREEN $(echo $'\ue718') $(node -v | cut -c2-)$BRIGHT_RED $(echo $'\ue791') \$(ruby_version)$BRIGHT_YELLOW \$(__git_ps1 '$(echo $'\ue725') %s ') $BRIGHT_GREEN\n∴ $RESET"
+PS1="$BRIGHT_BLUE\w$BRIGHT_GREEN $(echo $'\ue718') $(node -v | cut -c2-)$BRIGHT_RED $(echo $'\uf43b')  \$(ruby_version)$BRIGHT_YELLOW \$(__git_ps1 '$(echo $'\ue725') %s ') $BRIGHT_GREEN\n∴ $RESET"

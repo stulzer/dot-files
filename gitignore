@@ -34,3 +34,5 @@ config/initializers/englishify.rb
 .env.development.local
 .env.test.local
 .env.local
+
+doc/
