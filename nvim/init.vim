@@ -140,19 +140,13 @@ vmap <leader>P "+P
 
 " vim-vroom configuration
 let g:vroom_use_terminal = 1
-" if filereadable("Dockerfile") && filereadable("docker-compose.yml")
-"   let g:vroom_command_prefix="docker-compose run web"
-" end
 map <leader>s :VroomRunNearestTest<cr>
 map <leader>S :VroomRunTestFile<cr>
 
 " Trigger to run the whole RSpec suite
 function ClearScreenAndRunRSpec()
   :silent !clear
-  if filereadable("Dockerfile") && filereadable("docker-compose.yml")
-    :sp<cr>
-    :terminal docker-compose run web bundle exec rspec && docker-compose run web bundle exec rubocop
-  elseif filereadable("bin/rspec")
+  if filereadable("bin/rspec")
     :sp<cr>
     :terminal ./bin/rspec && bundle exec rubocop && bundle exec rails_best_practices
   elseif filereadable("Gemfile") && filereadable("package.json")
@@ -204,8 +198,8 @@ map <leader>nd :!node %<cr>
 " Mapping for quick js/less/scss folding
 nmap <leader>f vi{zf
 " Execute rubocop
-map <leader>u :sp<cr>:terminal docker-compose run web bundle exec rubocop<cr>
-map <leader>U :sp<cr>:terminal docker-compose run web bundle exec rubocop -a<cr>
+map <leader>u :sp<cr>:terminal bundle exec rubocop<cr>
+map <leader>U :sp<cr>:terminal bundle exec rubocop -a<cr>
 " Execute grunt test
 nmap <leader>g :!clear && npm test<cr>
 
@@ -268,7 +262,7 @@ function! ShowRoutes()
   :topleft 100 :split __Routes__
   :set buftype=nofile
   :normal 1GdG
-  :0r! docker-compose run web rake -s routes
+  :0r! rake -s routes
   :exec ":normal " . line("$") . "^W_ "
   :normal 1GG
   :normal dd
