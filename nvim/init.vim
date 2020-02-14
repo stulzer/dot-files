@@ -148,16 +148,16 @@ function ClearScreenAndRunRSpec()
   :silent !clear
   if filereadable("bin/rspec")
     :sp<cr>
-    :terminal ./bin/rspec && bundle exec rubocop && bundle exec rails_best_practices
+    :terminal ./bin/rspec && bundle exec rubocop && bundle exec haml-lint
   elseif filereadable("Gemfile") && filereadable("package.json")
     :sp<cr>
-    :terminal bundle exec rspec && bundle exec rubocop && bundle exec rails_best_practices
+    :terminal bundle exec rspec && bundle exec rubocop && bundle exec haml-lint
   elseif filereadable("package.json")
     :sp<cr>
     :terminal npm run test
   else
     :sp<cr>
-    :terminal bundle exec rspec && bundle exec rubocop && bundle exec rails_best_practices
+    :terminal bundle exec rspec && bundle exec rubocop && bundle exec haml-lint
   end
 endfunction
 map <leader>R :call ClearScreenAndRunRSpec()<cr>
