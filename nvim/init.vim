@@ -163,8 +163,10 @@ map <leader>R :call ClearScreenAndRunRSpec()<cr>
 function ClearScreenAndRunTests()
   :silent !clear
   if filereadable("app/views")
+    :sp<cr>
     :terminal bundle exec rake test && bundle exec rubocop && bundle exec haml-lint
   else
+    :sp<cr>
     :terminal bundle exec rake test && bundle exec rubocop
   end
 endfunction
