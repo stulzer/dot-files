@@ -118,9 +118,6 @@ set shiftwidth=2
 set expandtab
 set pastetoggle=<F12>
 
-colorscheme mitormk-laser
-set background=dark
-
 " Mapping for tab manipulation
 map <leader>tt :tabnew<cr>
 map <leader>tc :tabclose<cr>
@@ -441,5 +438,12 @@ tnoremap <esc> <c-\><c-n>
 " Need to make devicons work properly
 set encoding=UTF-8
 
+" colorscheme related config
+colorscheme mitormk-laser
+set background=dark
+
 " Airline theme
 let g:airline_theme='mitormk'
+
+" Set highlight color to match mitormk
+hi Search cterm=NONE ctermfg=black ctermbg=cyan
