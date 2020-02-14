@@ -143,7 +143,7 @@ let g:vroom_use_terminal = 1
 map <leader>s :VroomRunNearestTest<cr>
 map <leader>S :VroomRunTestFile<cr>
 
-" Trigger to run the whole RSpec suite
+" Trigger to run the whole RSpec suite and linters
 function ClearScreenAndRunRSpec()
   :silent !clear
   if filereadable("bin/rspec")
@@ -161,6 +161,17 @@ function ClearScreenAndRunRSpec()
   end
 endfunction
 map <leader>R :call ClearScreenAndRunRSpec()<cr>
+
+" Trigger minitest suite and linters
+function ClearScreenAndRunTests()
+  :silent !clear
+  if filereadable("app/views")
+    :terminal bundle exec rake test && bundle exec rubocop && bundle exec haml-lint
+  else
+    :terminal bundle exec rake test && bundle exec rubocop
+  end
+endfunction
+map <leader>T :call ClearScreenAndRunTests()<cr>
 
 " For the MakeGreen plugin and Ruby RSpec
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
