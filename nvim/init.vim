@@ -140,38 +140,6 @@ let g:vroom_use_terminal = 1
 map <leader>s :VroomRunNearestTest<cr>
 map <leader>S :VroomRunTestFile<cr>
 
-" Trigger to run the whole RSpec suite and linters
-function ClearScreenAndRunRSpec()
-  :silent !clear
-  if filereadable("bin/rspec")
-    :sp<cr>
-    :terminal ./bin/rspec && bundle exec rubocop && bundle exec haml-lint
-  elseif filereadable("Gemfile") && filereadable("package.json")
-    :sp<cr>
-    :terminal bundle exec rspec && bundle exec rubocop && bundle exec haml-lint
-  elseif filereadable("package.json")
-    :sp<cr>
-    :terminal npm run test
-  else
-    :sp<cr>
-    :terminal bundle exec rspec && bundle exec rubocop && bundle exec haml-lint
-  end
-endfunction
-map <leader>R :call ClearScreenAndRunRSpec()<cr>
-
-" Trigger minitest suite and linters
-function ClearScreenAndRunTests()
-  :silent !clear
-  if filereadable("app/views")
-    :sp<cr>
-    :terminal bundle exec rake test && bundle exec rubocop && bundle exec haml-lint
-  else
-    :sp<cr>
-    :terminal bundle exec rake test && bundle exec rubocop
-  end
-endfunction
-map <leader>T :call ClearScreenAndRunTests()<cr>
-
 " For the MakeGreen plugin and Ruby RSpec
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 
@@ -449,3 +417,18 @@ let g:airline_theme='mitormk'
 
 " Set highlight color to match mitormk
 hi Search cterm=NONE ctermfg=black ctermbg=cyan
+
+" Reads from .runner file and execute each command in a terminal buffer
+function Runner()
+  :silent !clear
+  if filereadable('.runner')
+    let s:lines = readfile('.runner')
+    let s:command = join(s:lines, ' && ')
+
+    :sp
+    execute "terminal " . s:command
+  else
+    :echoerr expand('%:p:h') . '/.runner file not found.'
+  end
+endfunction
+map <leader>R :call Runner()<cr>

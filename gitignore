@@ -36,3 +36,5 @@ config/initializers/englishify.rb
 .env.local
 
 doc/
+
+.runner
