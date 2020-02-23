@@ -49,6 +49,9 @@ alias tld='tail -f log/development.log'
 alias tlt='tail -f log/test.log'
 alias tlp='tail -f log/production.log'
 alias tl='tail -f log/*.log'
+alias r='bundle exec rails'
+alias rake='bundle exec rake'
+alias rspec='bundle exec rspec'
 
 # Migrations
 alias migrate='bundle exec rake db:migrate db:test:load'

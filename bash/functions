@@ -31,31 +31,6 @@ _complete_ssh_hosts () {
 
 complete -F _complete_ssh_hosts ssh
 
-# Rails 4.0 binstubs
-function check_binstubs() {
-  # detecting rails & rake
-  if [[ -e bin/rails && -e bin/rake ]]
-    then
-    alias r='./bin/rails'
-    alias rake='./bin/rake'
-  else
-    alias r='bundle exec rails'
-    alias rake='bundle exec rake'
-  fi
-
-  # detect rspec
-  if [ -e bin/rspec ]
-    then
-    alias rspec='./bin/rspec'
-  else
-    alias rspec='bundle exec rspec'
-  fi
-}
-
-check_binstubs;
-
-function cd() { builtin cd "$@" && check_binstubs; }
-
 # RAILS
 function rails_app() {
   rails new $1 -d postgresql -Tm https://github.com/stulzer/rails-template/raw/master/template.rb
