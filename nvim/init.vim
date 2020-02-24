@@ -381,8 +381,7 @@ nnoremap <leader>j :call JSONify()<cr>
 set mouse-=a
 
 " deoplete config
-let g:python_host_prog = "/usr/local/bin/python2"
-let g:python3_host_prog = "/usr/local/bin/python3"
+let g:python_host_prog = "/usr/local/bin/python3"
 let g:deoplete#enable_at_startup = 1
 " disable autocomplete
 let g:deoplete#disable_auto_complete = 1
