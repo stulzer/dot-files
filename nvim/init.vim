@@ -14,17 +14,18 @@ Plug 'honza/vim-snippets'
 Plug 'jremmen/vim-ripgrep'
 Plug 'kchmck/vim-coffee-script'
 Plug 'leafgarland/typescript-vim'
+Plug 'mxw/vim-jsx'
 Plug 'neomake/neomake'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'ryanoasis/vim-devicons'
+Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'slim-template/vim-slim'
 Plug 'stulzer/heroku-colorscheme'
 Plug 'stulzer/mitormk-laser'
 Plug 'stulzer/vim-airline-themes'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'stulzer/vim-vroom/'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-commentary'
@@ -140,15 +141,21 @@ let g:vroom_use_terminal = 1
 map <leader>s :VroomRunNearestTest<cr>
 map <leader>S :VroomRunTestFile<cr>
 
-" For the MakeGreen plugin and Ruby RSpec
-autocmd BufNewFile,BufRead *_spec.rb compiler rspec
-
 "for ruby, autoindent with two spaces, always expand tabs
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,ftl set ai sw=2 sts=2 et
 autocmd FileType python set sw=4 sts=4 et
 
-au BufRead,BufNewFile *.ejs set filetype=html
+" For the MakeGreen plugin and Ruby RSpec
+autocmd BufNewFile,BufRead *_spec.rb compiler rspec
+
+autocmd BufRead,BufNewFile *.ejs set filetype=html
 autocmd! BufRead,BufNewFile *.sass set filetype=sass
+
+" mjml as haml
+autocmd BufNewFile,BufReadPost *.mjml set filetype=haml
+
+" set filetypes as typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " Set line break
 set linebreak
@@ -240,7 +247,7 @@ function! ShowRoutes()
   :topleft 100 :split __Routes__
   :set buftype=nofile
   :normal 1GdG
-  :0r! rake -s routes
+  :0r! bundle exec rake -s routes
   :exec ":normal " . line("$") . "^W_ "
   :normal 1GG
   :normal dd
@@ -398,9 +405,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" mjml as haml
-autocmd BufNewFile,BufReadPost *.mjml set filetype=haml
-
 " Remaps escape for terminal mode
 tnoremap <esc> <c-\><c-n>
 
@@ -431,3 +435,8 @@ function Runner()
   end
 endfunction
 map <leader>R :call Runner()<cr>
+
+" Strips all HTML tags from a buffer
+function StripHTML()
+  :%s/<\_.\{-1,\}>//g
+endfunction

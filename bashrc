@@ -1,15 +1,17 @@
 homebrew=/usr/local/bin:/usr/local/sbin
 export EDITOR=nvim
 export PATH="$HOME/.rbenv/bin:$homebrew:$PATH"
-export PATH="/usr/local/share/npm/bin:${PATH}"
 export PATH="/usr/local/heroku/bin:$PATH"
-export GOPATH=$HOME/Code/gocode
-export PATH=$PATH:$GOPATH/bin
-export GPG_TTY=$(tty)
+export PATH="/usr/local/opt/node@10/bin:$PATH"
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+export PATH="/usr/local/share/npm/bin:${PATH}"
+export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/Code/gocode
+export GPG_TTY=$(tty)
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
 eval "$(rbenv init -)"
 
 export NVM_DIR="$HOME/.nvm"
