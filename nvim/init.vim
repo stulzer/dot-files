@@ -14,7 +14,9 @@ Plug 'honza/vim-snippets'
 Plug 'jremmen/vim-ripgrep'
 Plug 'kchmck/vim-coffee-script'
 Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'mxw/vim-jsx'
+Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'neomake/neomake'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
@@ -27,6 +29,7 @@ Plug 'stulzer/heroku-colorscheme'
 Plug 'stulzer/mitormk-laser'
 Plug 'stulzer/vim-airline-themes'
 Plug 'stulzer/vim-vroom/'
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -126,15 +129,23 @@ map <leader>tn :tabnext<cr>
 map <leader>tp :tabprevious<cr>
 map <leader>tm :tabmove
 
+" Remaps write buffer
 nnoremap <leader>w :w<cr>
 nnoremap <leader>a :wa<cr>
 
+" Remap easy copy and paste
 vmap <leader>y "+y
 vmap <leader>d "+d
 nmap <leader>p "+p
 nmap <leader>P "+P
 vmap <leader>p "+p
 vmap <leader>P "+P
+
+" GoTo code navigation.
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gt <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
 
 " vim-vroom configuration
 let g:vroom_use_terminal = 1
@@ -185,8 +196,6 @@ nmap <leader>f vi{zf
 " Execute rubocop
 map <leader>u :sp<cr>:terminal bundle exec rubocop<cr>
 map <leader>U :sp<cr>:terminal bundle exec rubocop -a<cr>
-" Execute grunt test
-nmap <leader>g :!clear && npm test<cr>
 
 " Function to align key value fat arrows in ruby, and equals in js, stolen
 " from @tenderlove vimrc file.
@@ -383,6 +392,7 @@ function! JSONify()
 endfunction
 
 nnoremap <leader>j :call JSONify()<cr>
+vnoremap <leader>j !python -m json.tool<cr>
 
 " Disable mouse click to go to position
 set mouse-=a
@@ -440,3 +450,12 @@ map <leader>R :call Runner()<cr>
 function StripHTML()
   :%s/<\_.\{-1,\}>//g
 endfunction
+
+" Starts coc server for typescript
+let g:coc_global_extensions = [ 'coc-tsserver' ]
+
+" I prefer to enable this when I enter a JavaScript or TypeScript buffer, and
+" disable it when I leave
+" https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
