@@ -115,3 +115,11 @@ function ruby_version() {
     rbenv global
   fi
 }
+
+function wait_for_samedi_db() {
+  while ! pg_isready -d samedi_development -h 127.0.0.1 -U postgres
+  do
+    echo 'Waiting for PostgreSQL'
+    sleep 1
+  done
+}
