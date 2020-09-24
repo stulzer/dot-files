@@ -30,7 +30,6 @@ ln -s ~/.etc/bashrc .bashrc
 ln -s ~/.etc/gemrc .gemrc
 ln -s ~/.etc/gitignore .gitignore
 ln -s ~/.etc/gitk .gitk
-ln -s ~/.etc/powconfig .powconfig
 ln -s ~/.etc/rspec .rspec
 ln -s ~/.etc/tmux.conf .tmux.conf
 ln -s ~/.etc/ssh/config .ssh/config
