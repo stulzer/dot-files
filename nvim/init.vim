@@ -394,8 +394,20 @@ endfunction
 nnoremap <leader>j :call JSONify()<cr>
 vnoremap <leader>j !python -m json.tool<cr>
 
-" Disable mouse click to go to position
-set mouse-=a
+" Disable mouse
+set mouse=
+noremap <S-LeftMouse>     <nop>
+noremap <S-LeftDrag>      <nop>
+noremap <S-LeftRelease>   <nop>
+noremap <2-S-LeftMouse>   <nop>
+noremap <2-S-LeftDrag>    <nop>
+noremap <2-S-LeftRelease> <nop>
+noremap <3-S-LeftMouse>   <nop>
+noremap <3-S-LeftDrag>    <nop>
+noremap <3-S-LeftRelease> <nop>
+noremap <4-S-LeftMouse>   <nop>
+noremap <4-S-LeftDrag>    <nop>
+noremap <4-S-LeftRelease> <nop>
 
 " deoplete config
 let g:python_host_prog = "/usr/local/bin/python3"
