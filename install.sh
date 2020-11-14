@@ -21,10 +21,11 @@ ECHO 'Cloning dot files'
 git clone https://github.com/stulzer/dot-files ~/.etc/
 ECHO 'Creating and symlinking configurations'
 cd ~
-mkdir .ssh .secrets .config .config/nvim
+mkdir .ssh .secrets .config .config/nvim .config/alacritty
 touch ~/.secrets/vars
 ln -s ~/.secrets/vars ~/.etc/env/vars
 ln -s ~/.etc/nvim/init.vim ~/.config/nvim/init.vim
+ln -s ~/.etc/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -s ~/.etc/bash_profile .bash_profile
 ln -s ~/.etc/bashrc .bashrc
 ln -s ~/.etc/gemrc .gemrc
