@@ -1,0 +1,59 @@
+font:
+  size: 20
+  normal:
+    family: Inconsolata Nerd Font
+    # family: Hack Nerd Font
+    # style: Regular
+
+  bold:
+    family: Inconsolata Nerd Font
+    # family: Hack Nerd Font
+    # style: Regular
+
+  italic:
+    family: Inconsolata Nerd Font
+    # family: Hack Nerd Font
+    # style: Regular
+
+colors:
+  primary:
+    background: '#23016f'
+    foreground: '#37dcf6'
+
+  # Cursor colors
+  cursor:
+    text:   '#2d2458'
+    cursor: '#ff047d'
+
+  # Normal colors
+  normal:
+    black:   '#03041a'
+    red:     '#ff047d'
+    green:   '#7adc03'
+    yellow:  '#ffeb00'
+    blue:    '#4badff'
+    magenta: '#b1a7ff'
+    cyan:    '#37dcf6'
+    white:   '#ebe5f2'
+
+  # Bright colors
+  bright:
+    black:   '#cbcdff'
+    red:     '#ff047d'
+    green:   '#7adc03'
+    yellow:  '#ffeb00'
+    blue:    '#4badff'
+    magenta: '#b1a7ff'
+    cyan:    '#37dcf6'
+    white:   '#ebe5f2'
+
+  # Dim colors
+  dim:
+    black:   '#03041a'
+    red:     '#ff047d'
+    green:   '#7adc03'
+    yellow:  '#ffeb00'
+    blue:    '#4badff'
+    magenta: '#b1a7ff'
+    cyan:    '#37dcf6'
+    white:   '#ebe5f2'
