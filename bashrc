@@ -11,12 +11,18 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
+export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
+export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
+export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 ### Improving fzf file search
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+. $(brew --prefix asdf)/asdf.sh
 
 . /usr/local/etc/bash_completion.d/git-completion.bash
 . /usr/local/etc/bash_completion.d/git-prompt.sh
@@ -26,9 +32,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 . ~/.etc/bash/functions
 . ~/.etc/bash/tmuxinator
 . ~/.etc/env/vars
-
-# colorls bash completion
-source $(dirname $(gem which colorls))/tab_complete.sh
 
 [[ -z "$TMUX" ]] && exec tmux
 

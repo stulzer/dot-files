@@ -112,7 +112,7 @@ function ruby_version() {
   if [ -e .ruby-version ]
     then cat .ruby-version
   else
-    ruby --version
+    asdf current ruby | awk '/[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}/{ print $2 }'
   fi
 }
 
