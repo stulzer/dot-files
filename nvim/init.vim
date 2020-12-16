@@ -9,7 +9,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'honza/vim-snippets'
 Plug 'jremmen/vim-ripgrep'
 Plug 'leafgarland/typescript-vim'
-Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+" Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'neomake/neomake'
