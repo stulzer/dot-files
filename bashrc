@@ -1,6 +1,5 @@
 homebrew=/usr/local/bin:/usr/local/sbin
 export EDITOR=nvim
-export PATH="$HOME/.rbenv/bin:$homebrew:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/opt/node@10/bin:$PATH"
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
@@ -11,12 +10,6 @@ export GPG_TTY=$(tty)
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-export NVM_DIR="$HOME/.nvm"
-
-eval "$(rbenv init -)"
-
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
