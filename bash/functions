@@ -110,7 +110,7 @@ function kill_em_all() {
 
 function ruby_version() {
   if [ -e .ruby-version ]
-    then cat .ruby-version
+    then cat .ruby-version | tr -d 'ruby-'
   else
     asdf current ruby | awk '/[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}/{ print $2 }'
   fi
