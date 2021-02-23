@@ -17,7 +17,7 @@ font:
 
 colors:
   primary:
-    background: '#23016f'
+    background: '#231b4d'
     foreground: '#37dcf6'
 
   # Cursor colors
