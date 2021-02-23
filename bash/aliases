@@ -10,7 +10,6 @@ alias v='nvim'
 
 # List
 alias ls='ls -lahG'
-alias l='colorls -la'
 
 # Quicker cd
 alias c='cd'
