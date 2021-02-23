@@ -57,3 +57,8 @@ colors:
     magenta: '#b1a7ff'
     cyan:    '#37dcf6'
     white:   '#ebe5f2'
+
+cursor:
+  style:
+    shape: Block
+    blinking: Always
