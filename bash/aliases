@@ -42,6 +42,7 @@ alias gbpurge='git fetch -p && git branch --merged | grep -v "\*" | grep -v "mas
 alias updateall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.git --work-tree=$PWD/{} pull origin master --rebase \;'
 alias whodid='git shortlog --summary --numbered'
 alias reekit='git diff master --name-only | xargs reek'
+alias latest-tag='git tag | sort -n -t "v" -k 2n'
 
 # Rails any version
 alias tld='tail -f log/development.log'

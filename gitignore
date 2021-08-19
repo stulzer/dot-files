@@ -37,4 +37,6 @@ config/initializers/englishify.rb
 
 doc/
 
+bin/deploy
+
 .runner
