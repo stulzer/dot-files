@@ -254,7 +254,7 @@ function! ShowRoutes()
   :topleft 100 :split __Routes__
   :set buftype=nofile
   :normal 1GdG
-  :0r! bundle exec rake -s routes
+  :0r! bundle exec rails routes
   :exec ":normal " . line("$") . "^W_ "
   :normal 1GG
   :normal dd
