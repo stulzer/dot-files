@@ -5,6 +5,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-rooter'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hail2u/vim-css3-syntax'
 Plug 'honza/vim-snippets'
 Plug 'jremmen/vim-ripgrep'
@@ -150,6 +151,8 @@ map <leader>S :VroomRunTestFile<cr>
 "for ruby, autoindent with two spaces, always expand tabs
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,ftl set ai sw=2 sts=2 et
 autocmd FileType python set sw=4 sts=4 et
+" use gofmt compatible tab settings
+autocmd FileType go setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
 
 " For the MakeGreen plugin and Ruby RSpec
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
