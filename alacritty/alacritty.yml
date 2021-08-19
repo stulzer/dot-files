@@ -1,19 +1,13 @@
 font:
-  size: 18
+  size: 20
   normal:
-    # family: Inconsolata Nerd Font
-    family: Hack Nerd Font
-    style: Regular
+    family: Inconsolata Nerd Font
 
   bold:
-    # family: Inconsolata Nerd Font
-    family: Hack Nerd Font
-    style: Bold
+    family: Inconsolata Nerd Font
 
   italic:
-    # family: Inconsolata Nerd Font
-    family: Hack Nerd Font
-    style: Italic
+    family: Inconsolata Nerd Font
 
 colors:
   primary:
