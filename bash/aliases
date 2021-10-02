@@ -67,9 +67,6 @@ alias up='docker-compose stop && rm tmp/pids/server.pid; docker-compose build we
 alias simpleserver='php -S localhost:9999'
 alias rubocop='bundle exec rubocop'
 
-# pow.cx
-alias rspow='touch ~/.pow/restart.txt'
-
 # docker
 alias start-docker='eval $(docker-machine env dev)'
 

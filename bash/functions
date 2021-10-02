@@ -31,63 +31,9 @@ _complete_ssh_hosts () {
 
 complete -F _complete_ssh_hosts ssh
 
-# RAILS
-function rails_app() {
-  rails new $1 -d postgresql -Tm https://github.com/stulzer/rails-template/raw/master/template.rb
-}
-
-# quick display/hide dot files
-function display_dotfiles(){
-  defaults write com.apple.finder AppleShowAllFiles TRUE
-  killall Finder
-}
-
-function hide_dotfiles(){
-  defaults write com.apple.finder AppleShowAllFiles FALSE
-  killall Finder
-}
-
-function zipr() {
-  zip -r $1.zip $1
-}
-
-function sf(){
-  open -a Safari http://$1
-}
-
-function tarc(){
-  tar -czvf $1 $2
-}
-
-function tarx(){
-  tar -xzvf $1 $2
-}
-
-function dev() {
-  open http://$(basename $PWD).dev/
-}
-
-# heroku
-function opro() {
-  heroku open --app $(basename $PWD)-production
-}
-
-function osta() {
-  heroku open --app $(basename $PWD)-staging
-}
-
 # Usage: changes d038ff1 5d7f017
 function changes() {
   git log $1..$2 --pretty=format:'*%s*%n%b' --no-merges
-}
-
-function hl() {
-  if [ -z "$2" ]
-    then src="pbpaste"
-  else
-    src="cat $2"
-  fi
-  $src | highlight -O rtf --syntax $1 --font Inconsolata --font-size 24 | pbcopy
 }
 
 # Run RSpec on each last commit based on the number of commits you pass as argument
