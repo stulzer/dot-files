@@ -133,11 +133,11 @@ nnoremap <leader>a :wa<cr>
 function! SshCopy()
   norm! gv"sy
   :call writefile(getreg('s', 1, 1), '/tmp/copy-buffer')
-  :silent exec '!cat /tmp/copy-buffer | ssh mbp pbcopy'
+  :silent exec '!cat /tmp/copy-buffer | ssh mm pbcopy'
 endfunction
 
 function! SshPaste()
-  :read ! ssh mbp pbpaste
+  :read ! ssh mm pbpaste
 endfunction
 
 " Remap copy and paste
