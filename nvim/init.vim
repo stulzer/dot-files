@@ -3,7 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
-Plug 'airblade/vim-rooter'
+" Plug 'airblade/vim-rooter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hail2u/vim-css3-syntax'
@@ -22,8 +22,8 @@ Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
 Plug 'slim-template/vim-slim'
 Plug 'stulzer/heroku-colorscheme'
-" Plug 'stulzer/mitormk-laser'
-Plug '/Users/stulzer/Labs/mitormk-laser'
+Plug 'stulzer/mitormk-laser'
+" Plug '/Users/stulzer/Labs/mitormk-laser'
 Plug 'stulzer/vim-airline-themes'
 Plug 'stulzer/vim-vroom/'
 Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
@@ -130,13 +130,31 @@ map <leader>tm :tabmove
 nnoremap <leader>w :w<cr>
 nnoremap <leader>a :wa<cr>
 
-" Remap easy copy and paste
-vmap <leader>y "+y
-vmap <leader>d "+d
-nmap <leader>p "+p
-nmap <leader>P "+P
-vmap <leader>p "+p
-vmap <leader>P "+P
+function! SshCopy()
+  norm! gv"sy
+  :call writefile(getreg('s', 1, 1), '/tmp/copy-buffer')
+  :silent exec '!cat /tmp/copy-buffer | ssh mbp pbcopy'
+endfunction
+
+function! SshPaste()
+  :read ! ssh mbp pbpaste
+endfunction
+
+" Remap copy and paste
+if system('uname -s') == "Darwin\n"
+  vmap <leader>y "+y
+  nmap <leader>p "+p
+  nmap <leader>P "+P
+  vmap <leader>p "+p
+  vmap <leader>P "+P
+else
+  vmap <silent> <leader>y :<c-u>call SshCopy()<cr>
+  nmap <leader>p :<c-u>call SshPaste()<cr>
+  nmap <leader>P :<c-u>call SshPaste()<cr>
+  vmap <leader>p :<c-u>call SshPaste()<cr>
+  vmap <leader>P :<c-u>call SshPaste()<cr>
+endif
+
 
 " GoTo code navigation.
 nmap <leader>gd <Plug>(coc-definition)
@@ -470,3 +488,6 @@ let g:coc_global_extensions = [ 'coc-tsserver' ]
 " https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+" Prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile

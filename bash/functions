@@ -62,14 +62,28 @@ function ruby_version() {
   fi
 }
 
-function wait_for_samedi_db() {
-  while ! pg_isready -d samedi_development -h 127.0.0.1 -U postgres
+function wait_for_db() {
+  database=$(first_match 'database: ' config/database.yml)
+  host=$(first_match 'host: ' config/database.yml)
+  user=$(first_match 'username: ' config/database.yml)
+
+  while ! pg_isready -d $database -h $host -U $user
   do
     echo 'Waiting for PostgreSQL'
     sleep 1
   done
 }
 
+function first_match() {
+  pattern=$1
+  file=$2
+  cat $file | grep $pattern | sed -n -e 's/'$(echo $pattern)' //p' | head -n 1
+}
+
 function create-tag() {
   ~/.etc/bash/create_gitlab_release_tag
+}
+
+function fix-docker-perms() {
+  sudo chown -R 1000:root $1
 }
