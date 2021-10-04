@@ -7,7 +7,7 @@
 #### Inconsolata Nerd Font
 https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Inconsolata.zip
 
-#### brew
+#### brew for macOS
 http://brew.sh/
 
 #### Install Neovim Minimalist Plugin

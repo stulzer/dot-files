@@ -14,4 +14,4 @@
 # IdentityFile ~/.ssh/path-to-private-key
 
 Host *
-# UseKeychain yes
+# UseKeychain yes // on macOS
