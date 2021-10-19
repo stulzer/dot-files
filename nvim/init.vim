@@ -136,8 +136,20 @@ function! SshCopy()
   :silent exec '!cat /tmp/copy-buffer | ssh mm pbcopy'
 endfunction
 
-function! SshPaste()
+function! SshPasteBelow()
   :read ! ssh mm pbpaste
+endfunction
+
+function! SshPasteAbove()
+  let pastedValue = system('ssh mm pbpaste')
+  :call setreg('s', pastedValue, 'l')
+  norm! "sP
+endfunction
+
+function! SshVisualPaste()
+  let pastedValue = system('ssh mm pbpaste')
+  :call setreg('s', pastedValue, 'b')
+  norm! gv"sp
 endfunction
 
 " Remap copy and paste
@@ -149,10 +161,10 @@ if system('uname -s') == "Darwin\n"
   vmap <leader>P "+P
 else
   vmap <silent> <leader>y :<c-u>call SshCopy()<cr>
-  nmap <leader>p :<c-u>call SshPaste()<cr>
-  nmap <leader>P :<c-u>call SshPaste()<cr>
-  vmap <leader>p :<c-u>call SshPaste()<cr>
-  vmap <leader>P :<c-u>call SshPaste()<cr>
+  nmap <leader>p :<c-u>call SshPasteBelow()<cr>
+  nmap <leader>P :<c-u>call SshPasteAbove()<cr>
+  vmap <leader>p :<c-u>call SshVisualPaste()<cr>
+  vmap <leader>P :<c-u>call SshVisualPaste()<cr>
 endif
 
 
