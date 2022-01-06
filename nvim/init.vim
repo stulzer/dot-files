@@ -10,7 +10,6 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'honza/vim-snippets'
 Plug 'jremmen/vim-ripgrep'
 Plug 'leafgarland/typescript-vim'
-" Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'neomake/neomake'
@@ -23,9 +22,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'slim-template/vim-slim'
 Plug 'stulzer/heroku-colorscheme'
 Plug 'stulzer/mitormk-laser'
-" Plug '/Users/stulzer/Labs/mitormk-laser'
 Plug 'stulzer/vim-airline-themes'
-Plug 'stulzer/vim-vroom/'
+Plug 'stulzer/vim-vroom/', { 'branch': 'develop' }
 Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-commentary'
@@ -303,6 +301,7 @@ map <leader>ct :FZF app/controllers<cr>
 map <leader>ci :FZF app/interactors<cr>
 map <leader>cm :FZF app/models<cr>
 map <leader>cp :FZF app/presenters<cr>
+map <leader>cj :FZF app/javascript<cr>
 map <leader>cs :FZF spec<cr>
 map <leader>cl :FZF lib<cr>
 map <leader>cc :sp config/application.yml<cr>
@@ -417,11 +416,11 @@ let g:airline_theme='powerlineish'
 
 " beautify JSON
 function! JSONify()
-  %!python -m json.tool
+  %! jq
 endfunction
 
 nnoremap <leader>j :call JSONify()<cr>
-vnoremap <leader>j !python -m json.tool<cr>
+vnoremap <leader>j :call JSONify()<cr>
 
 " Disable mouse
 set mouse=
