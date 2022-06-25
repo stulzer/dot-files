@@ -412,7 +412,6 @@ endfunction
 
 " nvim air-line
 let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
 
 " beautify JSON
 function! JSONify()
