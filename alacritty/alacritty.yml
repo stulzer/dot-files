@@ -56,3 +56,6 @@ cursor:
   style:
     shape: Block
     blinking: Always
+
+mouse:
+  hide_when_typing: true
