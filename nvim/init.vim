@@ -3,29 +3,28 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
-" Plug 'airblade/vim-rooter'
+Plug 'airblade/vim-rooter'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hail2u/vim-css3-syntax'
 Plug 'honza/vim-snippets'
 Plug 'jremmen/vim-ripgrep'
 Plug 'leafgarland/typescript-vim'
-Plug 'mxw/vim-jsx'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'neomake/neomake'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'peitalin/vim-jsx-typescript'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
+Plug 'lambdalisue/glyph-palette.vim'
 Plug 'slim-template/vim-slim'
 Plug 'stulzer/heroku-colorscheme'
-Plug 'stulzer/mitormk-laser'
+" Plug 'stulzer/mitormk-laser'
+Plug '~/Labs/mitormk-laser'
 Plug 'stulzer/vim-airline-themes'
 Plug 'stulzer/vim-vroom/', { 'branch': 'develop' }
 Plug 'styled-components/vim-styled-components', { 'branch': 'develop' }
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
@@ -33,7 +32,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/Enter-Indent'
-Plug '/usr/local/opt/fzf'
+Plug 'yuezk/vim-js'
+Plug '/opt/homebrew/opt/fzf'
 
 call plug#end()
 
@@ -180,8 +180,6 @@ map <leader>S :VroomRunTestFile<cr>
 "for ruby, autoindent with two spaces, always expand tabs
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,ftl set ai sw=2 sts=2 et
 autocmd FileType python set sw=4 sts=4 et
-" use gofmt compatible tab settings
-autocmd FileType go setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
 
 " For the MakeGreen plugin and Ruby RSpec
 autocmd BufNewFile,BufRead *_spec.rb compiler rspec
@@ -490,8 +488,36 @@ function StripHTML()
   :%s/<\_.\{-1,\}>//g
 endfunction
 
-" Starts coc server for typescript
-let g:coc_global_extensions = [ 'coc-tsserver' ]
+" Starts coc server
+let g:coc_global_extensions = [
+  \ 'coc-css',
+  \ 'coc-json',
+  \ 'coc-tsserver',
+  \ 'coc-elixir',
+  \ 'coc-svelte',
+  \ 'coc-html',
+  \ 'coc-yaml',
+  \ 'coc-vimlsp',
+  \ 'coc-svg',
+  \ 'coc-actions',
+  \ 'coc-lists',
+  \ 'coc-json',
+  \ 'coc-yank',
+  \ 'coc-highlight',
+  \ 'coc-solargraph',
+  \ ]
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/stylelint')
+  let g:coc_global_extensions += ['coc-stylelintplus']
+endif
 
 " I prefer to enable this when I enter a JavaScript or TypeScript buffer, and
 " disable it when I leave
@@ -501,3 +527,18 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Disabling perl provider
+let g:loaded_perl_provider = 0
+
+" Enabling comments on JSON
+autocmd FileType json syntax match Comment +\/\/.\+$+
+autocmd FileType json syntax match Comment +\/\*.\+\*\/$+
+
+nmap <leader>F :Prettier <CR> :Neoformat <CR>
+
+augroup my-glyph-palette
+  autocmd! *
+  autocmd FileType fern call glyph_palette#apply()
+  autocmd FileType nerdtree,startify call glyph_palette#apply()
+augroup END
