@@ -54,20 +54,12 @@ function kill_em_all() {
   ps -fax | grep -v grep | grep $1 | awk '{print $2}' | xargs kill -9
 }
 
-function ruby_version() {
-  if [ -e .ruby-version ]
-    then cat .ruby-version | tr -d 'ruby-'
-  else
-    asdf current ruby | awk '/[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}/{ print $2 }'
-  fi
-}
-
 function wait_for_db() {
-  database=$(first_match 'database: ' config/database.yml)
-  host=$(first_match 'host: ' config/database.yml)
-  user=$(first_match 'username: ' config/database.yml)
+  database=${1:-$(first_match 'database: ' config/database.yml)}
+  host=${2:-$(first_match 'host: ' config/database.yml)}
+  user=${3:-$(first_match 'username: ' config/database.yml)}
 
-  while ! pg_isready -d $database -h $host -U $user
+  while ! pg_isready -d $database -h $host -U $user -p ${4:-$(echo 5432)}
   do
     echo 'Waiting for PostgreSQL'
     sleep 1

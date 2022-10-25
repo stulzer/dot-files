@@ -69,6 +69,7 @@ alias rubocop='bundle exec rubocop'
 
 # docker
 alias start-docker='eval $(docker-machine env dev)'
+alias vmdockerssh='socat ~/Library/Containers/com.docker.docker/Data/vms/0/console.sock -,rawer'
 
 # tmuxinator
 alias mux='tmuxinator'
@@ -81,3 +82,6 @@ alias mailhog='docker run -p 1025:1025 -p 8025:8025 mailhog/mailhog'
 
 # rename
 alias renamejpg="rename -e 's/.*/$N.jpg/' *.jpg"
+
+# Rosetta brew
+alias rbrew='/usr/local/bin/brew'

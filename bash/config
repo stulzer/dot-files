@@ -77,4 +77,18 @@ export GIT_PS1_SHOWUPSTREAM=auto
 # 
 # 更 <- Pill currently broken :(
 
-PS1="$BRIGHT_BLUE\w$BRIGHT_GREEN $(echo $'\ue718') $(node -v | cut -c2-)$BRIGHT_RED $(echo $'\uf43b')  \$(ruby_version)$BRIGHT_YELLOW \$(__git_ps1 '$(echo $'\ue725') %s ') $BRIGHT_RED\n  $RESET"
+function ruby_version() {
+  if [ -e .ruby-version ]
+    then cat .ruby-version | tr -d 'ruby-'
+  else
+    asdf current ruby | awk '/[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}/{ print $2 }'
+  fi
+}
+
+if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
+  # warp PS1
+  PS1="$BRIGHT_BLUE\w$BRIGHT_GREEN  $(node -v | cut -c2-)$RED  $(ruby_version)$BRIGHT_YELLOW $(__git_ps1 ' %s')"
+else
+  # non warp PS1 for alacritty or terminal app
+  PS1="$BRIGHT_BLUE\w$BRIGHT_GREEN $(echo ) $(node -v | cut -c2-)$BRIGHT_RED $(echo ) \$(ruby_version)$BRIGHT_YELLOW \$(__git_ps1 '$(echo ) %s ') $BRIGHT_RED\n  $RESET"
+fi
