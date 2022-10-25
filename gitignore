@@ -40,3 +40,5 @@ doc/
 bin/deploy
 
 .runner
+
+.solargraph.yml
