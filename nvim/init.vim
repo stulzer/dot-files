@@ -16,8 +16,9 @@ Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sbdchd/neoformat'
-Plug 'scrooloose/nerdtree'
 Plug 'lambdalisue/glyph-palette.vim'
+Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'slim-template/vim-slim'
 Plug 'stulzer/heroku-colorscheme'
 " Plug 'stulzer/mitormk-laser'
@@ -347,7 +348,7 @@ augroup END
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-nnoremap <C-n> :NERDTree <cr>
+nnoremap <C-n> :NvimTreeToggle <cr>
 
 " delimitMate configuration
 let delimitMate_matchpairs = "(:),[:],{:}"
@@ -540,5 +541,9 @@ nmap <leader>F :Prettier <CR> :Neoformat <CR>
 augroup my-glyph-palette
   autocmd! *
   autocmd FileType fern call glyph_palette#apply()
-  autocmd FileType nerdtree,startify call glyph_palette#apply()
+  autocmd FileType startify call glyph_palette#apply()
 augroup END
+
+
+" Neovim tree configuration in lua
+luafile $HOME/.etc/nvim/lua/nvim-tree.lua
