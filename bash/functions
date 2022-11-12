@@ -79,3 +79,21 @@ function create-tag() {
 function fix-docker-perms() {
   sudo chown -R 1000:root $1
 }
+
+
+# Rails binstubs are back
+function check_binstubs() {
+  # detecting rails & rake
+  if [[ -e bin/rails && -e bin/rake ]]
+    then
+    alias r='./bin/rails'
+    alias rake='./bin/rake'
+  else
+    alias r='bundle exec rails'
+    alias rake='bundle exec rake'
+  fi
+}
+
+check_binstubs;
+
+function cd() { builtin cd "$@" && check_binstubs; }
