@@ -85,10 +85,18 @@ function ruby_version() {
   fi
 }
 
+function node_version() {
+  if [ -e .nvmrc ]
+    then cat .nvmrc
+  else
+    asdf current nodejs | awk '/[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}/{ print $2 }'
+  fi
+}
+
 if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
   # warp PS1
-  PS1="$BRIGHT_BLUE\w$BRIGHT_GREEN  $(node -v | cut -c2-)$RED  $(ruby_version)$BRIGHT_YELLOW $(__git_ps1 ' %s')"
+  PS1="$BRIGHT_BLUE\w$BRIGHT_GREEN  $(node_version)$RED  $(ruby_version)$BRIGHT_YELLOW $(__git_ps1 ' %s')"
 else
   # non warp PS1 for alacritty or terminal app
-  PS1="$BRIGHT_BLUE\w$BRIGHT_GREEN $(echo ) $(node -v | cut -c2-)$BRIGHT_RED $(echo ) \$(ruby_version)$BRIGHT_YELLOW \$(__git_ps1 '$(echo ) %s ') $BRIGHT_RED\n  $RESET"
+  PS1="$BRIGHT_BLUE\w$BRIGHT_GREEN $(echo ) \$(node_version)$BRIGHT_RED $(echo ) \$(ruby_version)$BRIGHT_YELLOW \$(__git_ps1 '$(echo ) %s ') $BRIGHT_RED\n  $RESET"
 fi

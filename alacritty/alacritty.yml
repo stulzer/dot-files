@@ -27,7 +27,7 @@ colors:
     yellow:  '#ffeb00'
     blue:    '#4badff'
     magenta: '#b1a7ff'
-    cyan:    '#37dcf6'
+    cyan:    '#0092fb'
     white:   '#ebe5f2'
 
   # Bright colors
@@ -38,7 +38,7 @@ colors:
     yellow:  '#ffeb00'
     blue:    '#4badff'
     magenta: '#b1a7ff'
-    cyan:    '#37dcf6'
+    cyan:    '#0092fb'
     white:   '#ebe5f2'
 
   # Dim colors
@@ -49,7 +49,7 @@ colors:
     yellow:  '#ffeb00'
     blue:    '#4badff'
     magenta: '#b1a7ff'
-    cyan:    '#37dcf6'
+    cyan:    '#0092fb'
     white:   '#ebe5f2'
 
 cursor:
