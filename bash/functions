@@ -72,10 +72,6 @@ function first_match() {
   cat $file | grep $pattern | sed -n -e 's/'$(echo $pattern)' //p' | head -n 1
 }
 
-function create-tag() {
-  ~/.etc/bash/create_gitlab_release_tag
-}
-
 function fix-docker-perms() {
   sudo chown -R 1000:root $1
 }
