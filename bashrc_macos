@@ -23,7 +23,7 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 
 . /opt/homebrew/etc/bash_completion.d/*
-. $(brew --prefix asdf)/asdf.sh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 if type brew &>/dev/null; then
   for COMPLETION in $(brew --prefix)/etc/bash_completion.d/*
