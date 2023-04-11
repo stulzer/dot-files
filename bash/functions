@@ -78,7 +78,7 @@ function fix-docker-perms() {
 
 
 # Rails binstubs are back
-function check_binstubs() {
+function rails_binstubs() {
   # detecting rails & rake
   if [[ -e bin/rails && -e bin/rake ]]
     then
@@ -88,8 +88,19 @@ function check_binstubs() {
     alias r='bundle exec rails'
     alias rake='bundle exec rake'
   fi
+
+  # detecting bin yarn
+  if [[ -e bin/yarn ]]
+    then
+    alias yarn='./bin/yarn'
+  else
+    if alias yarn >/dev/null 2>&1
+      then
+      unalias yarn
+    fi
+  fi
 }
 
-check_binstubs;
+rails_binstubs;
 
-function cd() { builtin cd "$@" && check_binstubs; }
+function cd() { builtin cd "$@" && rails_binstubs; }
