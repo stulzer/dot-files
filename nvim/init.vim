@@ -207,8 +207,8 @@ set listchars=tab:▸\ ,eol:¬,trail:·
 highlight NonText guifg=#143c46
 highlight SpecialKey guifg=#143c46
 
-" spell checker, Portuguese and English as default language
-set spelllang=en_us,pt,de
+" spell checker
+set spelllang=en_us
 set spell
 
 " fast nohighligth
@@ -506,19 +506,16 @@ let g:coc_global_extensions = [
   \ 'coc-yank',
   \ 'coc-highlight',
   \ 'coc-solargraph',
+  \ 'coc-prettier',
+  \ 'coc-eslint',
+  \ 'coc-stylelintplus',
   \ ]
 
-if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-  let g:coc_global_extensions += ['coc-prettier']
-endif
-
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
-endif
-
-if isdirectory('./node_modules') && isdirectory('./node_modules/stylelint')
-  let g:coc_global_extensions += ['coc-stylelintplus']
-endif
+let g:neoformat_enabled_javascript = [ 'prettier', 'eslint' ]
+let g:neoformat_enabled_json = [ 'prettier' ]
+let g:neoformat_enabled_graphql = [ 'prettier' ]
+let g:neoformat_enabled_css = [ 'prettier' ]
+let g:neoformat_enabled_ruby = [ 'rubocop' ]
 
 " I prefer to enable this when I enter a JavaScript or TypeScript buffer, and
 " disable it when I leave
@@ -527,7 +524,13 @@ autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " Prettier
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  command! -nargs=0 Prettier :CocCommand prettier.formatFile
+else
+  command! -nargs=0 Prettier :silent %!yarn prettier --stdin-filepath %
+endif
+
 
 " Disabling perl provider
 let g:loaded_perl_provider = 0
@@ -544,6 +547,12 @@ augroup my-glyph-palette
   autocmd FileType startify call glyph_palette#apply()
 augroup END
 
-
 " Neovim tree configuration in lua
 luafile $HOME/.etc/nvim/lua/nvim-tree.lua
+
+" Experimenting with standardrb
+if filereadable('Gemfile') && match(readfile('Gemfile'),'gem "standard"') != -1
+  " Neovim Ruby standard configuration
+  luafile $HOME/.etc/nvim/lua/standardrb.lua
+  let g:neoformat_enabled_ruby = [ 'standard' ]
+endif
