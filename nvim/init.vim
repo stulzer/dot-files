@@ -221,7 +221,7 @@ map <leader>nd :!node %<cr>
 nmap <leader>f vi{zf
 " Execute rubocop
 map <leader>u :sp<cr>:terminal bundle exec rubocop<cr>
-map <leader>U :sp<cr>:terminal bundle exec rubocop -a<cr>
+map <leader>U :sp<cr>:terminal bundle exec rubocop -A<cr>
 
 " Function to align key value fat arrows in ruby, and equals in js, stolen
 " from @tenderlove vimrc file.
