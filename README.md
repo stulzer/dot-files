@@ -5,7 +5,7 @@
 ## Dependencies
 
 #### Inconsolata Nerd Font
-https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Inconsolata.zip
+https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/InconsolataGo.zip
 
 #### brew for macOS
 http://brew.sh/
@@ -23,10 +23,4 @@ Fire Neovim
 
 ```
 nvim
-```
-
-and then
-
-```
-:PlugInstall
 ```
