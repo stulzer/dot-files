@@ -67,7 +67,7 @@ M.general = {
     ["<leader>rn"] = { "<cmd>lua RenameFile()<CR>", "Rename current buffer" },
     ["<leader>cR"] = { "<cmd>lua ShowRoutes()<CR>", "Show routes" },
     ["<leader>j"] = { "<cmd>lua FormatJSON()<CR>", "Formats current buffer in JSON via jq" },
-    ["<leader>R"] = { "<cmd>lua Runner()<CR>", "Formats current buffer in JSON via jq" },
+    ["<leader>R"] = { "<cmd>lua Runner()<CR>", "Detect a .runner file and execute it" },
     ["<C-p>"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<leader>cm"] = { "<cmd>lua require 'telescope.builtin'.find_files{ cwd = 'app/models' } <CR>", "Find Models" },
     ["<leader>ct"] = {
