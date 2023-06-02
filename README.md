@@ -18,9 +18,8 @@ https://nvchad.com/
 ./install.sh
 ```
 
-### After Installing Plugins on Neovim
-Fire Neovim
-
+### Installing Plugins on Neovim
+Just Fire Neovim
 ```
 nvim
 ```
