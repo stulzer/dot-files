@@ -56,4 +56,5 @@ ln -s ~/.etc/.tool-versions .tool-versions
 ln -s ~/.etc/.asdfrc .asdfrc
 ln -s ~/.etc/.default-gems .default-gems
 ln -s ~/.etc/.default-npm-packages .default-npm-packages
+ln -s ~/.etc/nvim/custom ~/.config/nvim/lua/custom
 ECHO 'Yey, good to go!'

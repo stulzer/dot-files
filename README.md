@@ -13,12 +13,18 @@ http://brew.sh/
 #### Install Neovim Minimalist Plugin
 https://github.com/junegunn/vim-plug#neovim
 
-#### Install everything
+#### Install NVChad
+
+https://nvchad.com/
+
+#### Install Dependencies and create symlinks
+
 ```
 ./install.sh
 ```
 
-### Installing Plugins on Neovim
+### After Installing Plugins on Neovim
+
 Fire Neovim
 
 ```
