@@ -85,6 +85,8 @@ M.general = {
     ["<leader>s"] = { "<cmd>VroomRunNearestTest <CR>", "Run Near Test" },
     ["<leader>S"] = { "<cmd>VroomRunTestFile <CR>", "Run Whole Test File" },
     ["<leader>q"] = { "<cmd>noh <CR>", "Clear Highlight" },
+    ["<leader>p"] = { "\"+p", "Paste from system clipboard" },
+    ["<leader>P"] = { "\"+P", "Paste above from system clipboard" },
     ["<leader><leader>"] = { "<c-^>", "Switch Back Latest Buffer" },
     ["H"] = { "^", "End of Line" },
     ["L"] = { "$", "Beginning of Line" },
@@ -96,6 +98,9 @@ M.general = {
   v = {
     ["H"] = { "^", "End of Line" },
     ["L"] = { "$", "Beginning of Line" },
+    ["<leader>y"] = { "\"+y", "Copy to system clipboard" },
+    ["<leader>p"] = { "\"+p", "Paste from system clipboard" },
+    ["<leader>P"] = { "\"+P", "Paste above from system clipboard" },
   },
 
   -- Command mode mappings

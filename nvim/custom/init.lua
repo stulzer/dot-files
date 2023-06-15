@@ -32,3 +32,8 @@ vim.api.nvim_command("command! -bang Q q<bang>")
 vim.api.nvim_command("command! -bang QA qa<bang>")
 vim.api.nvim_command("command! -bang Qa qa<bang>")
 vim.api.nvim_command("command! -bang Bd bd<bang>")
+
+vim.cmd([[ autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif ]])
+
+-- set no clipboard
+vim.opt.clipboard = ""
