@@ -1,15 +1,23 @@
+cursor:
+  style:
+    shape: Block
+    blinking: Always
+
+mouse:
+  hide_when_typing: true
+
 font:
   size: 20
   normal:
-    family: InconsolataGo Nerd Font
+    family: Inconsolata Nerd Font
 
   bold:
-    family: InconsolataGo Nerd Font
+    family: Inconsolata Nerd Font
 
   italic:
-    family: InconsolataGo Nerd Font
+    family: Inconsolata Nerd Font
 
-# Colors (Solarized Dark)
+# # Colors (Solarized Dark)
 colors:
   # Default colors
   primary:
@@ -37,11 +45,3 @@ colors:
     magenta: '0x6c71c4'
     cyan:    '0x93a1a1'
     white:   '0xfdf6e3'
-
-cursor:
-  style:
-    shape: Block
-    blinking: Always
-
-mouse:
-  hide_when_typing: true
