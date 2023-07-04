@@ -32,6 +32,14 @@ local plugins = {
 					end
 				end,
 			},
+			sources = {
+				-- Copilot Source
+				{ name = "copilot", group_index = 2 },
+				-- Other Sources
+				{ name = "nvim_lsp", group_index = 2 },
+				{ name = "path", group_index = 2 },
+				{ name = "luasnip", group_index = 2 },
+			},
 		},
 	},
 
@@ -81,10 +89,21 @@ local plugins = {
 	{ "jremmen/vim-ripgrep", lazy = false },
 
 	{
-		"github/copilot.vim",
+		"zbirenbaum/copilot.lua",
 		lazy = false,
 		config = function()
-			vim.g.copilot_assume_mapped = true
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
+		end,
+	},
+
+	{
+		"zbirenbaum/copilot-cmp",
+		lazy = false,
+		config = function()
+			require("copilot_cmp").setup()
 		end,
 	},
 }
