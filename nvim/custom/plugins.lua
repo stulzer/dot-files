@@ -1,4 +1,5 @@
 local overrides = require("custom.configs.overrides")
+local cmp = require("cmp")
 
 local plugins = {
 	{
@@ -22,13 +23,13 @@ local plugins = {
 		"hrsh7th/nvim-cmp",
 		opts = {
 			mapping = {
-				-- disable  tab
+				-- Change tab behavior
 				["<Tab>"] = function(callback)
-					callback()
-				end,
-
-				["<S-Tab>"] = function(callback)
-					callback()
+					if cmp.visible() then
+						cmp.confirm({ select = true })
+					else
+						callback()
+					end
 				end,
 			},
 		},
