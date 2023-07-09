@@ -1,13 +1,7 @@
 local M = {}
 
-local highlights = require("custom.highlights")
-
 M.ui = {
-	theme = "solarized_dark",
-	theme_toggle = { "solarized_dark", "one_light" },
-
-	hl_override = highlights.override,
-	hl_add = highlights.add,
+	theme = "laser",
 }
 
 M.plugins = "custom.plugins"

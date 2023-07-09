@@ -1,83 +1,55 @@
 local M = {}
 
 M.base_30 = {
-	white = "#dd00ff",
+	white = "#48379e",
 	darker_black = "#201947", -- darker_black = 6% darker than black
 	black = "#231b4d", -- black = usually your theme bg
 	black2 = "#2b215f", -- black2 = 6% lighter than black
 	one_bg = "#31266b", -- onebg = 10% lighter than black
 	one_bg2 = "#3d2f86", -- oneb2 = 19% lighter than black
 	one_bg3 = "#48379e", -- oneb3 = 27% lighter than black
-	grey = "#c9c3ea", -- grey = 40% lighter than black (the % here depends so choose the perfect grey!)
-	grey_fg = "#cec9ec", -- grey_fg = 10% lighter than grey
-	grey_fg2 = "#d5d0ef", -- grey_fg2 = 20% lighter than grey
-	light_grey = "#e5e2f5", -- light_grey = 28% lighter than grey
+	grey = "#3d2f86", -- grey = 40% lighter than black (the % here depends so choose the perfect grey!)
+	grey_fg = "#48379e", -- grey_fg = 10% lighter than grey
+	grey_fg2 = "#6251B8", -- grey_fg2 = 20% lighter than grey
+	light_grey = "#7B6AD1", -- light_grey = 28% lighter than grey
 	red = "#ff047d",
 	baby_pink = "#ff1d8a", -- baby_pink = 15% lighter than red or any babypink color you like!
 	pink = "#e61d7e",
-	line = "#352975", -- for lines like vertsplit line = 15% lighter than black
-	green = "#7adc03",
-	vibrant_green = "#8efc09",
-	blue = "#4badff",
-	nord_blue = "#1a96ff", -- nord_blue = 13% darker than blue
-	yellow = "#ffeb00",
-	sun = "#fff042", -- sun = 8% lighter than yellow
-	purple = "#b1a7ff",
-	dark_purple = "#9385ff",
+	line = "#2b215f", -- for lines like vertsplit
+	green = "#859900",
+	vibrant_green = "#b2c62d",
+	nord_blue = "#197ec5",
+	blue = "#268bd2",
+	yellow = "#b58900",
+	sun = "#c4980f",
+	purple = "#7E74CC",
+	dark_purple = "#322880",
 	teal = "#74c5aa",
 	orange = "#c85106",
 	cyan = "#37dcf6",
-	statusline_bg = "#281f59", -- statusline_bg = 4% lighter than black
-	lightbg = "#392c7f", -- lightbg = 13% lighter than statusline_bg
-	lightbg2 = "#31266d", -- lightbg2 = 7% lighter than statusline_bg
-	pmenu_bg = "#ff9445",
-	folder_bg = "#4badff", -- folder_bg = blue color
+	statusline_bg = "#042f3a",
+	lightbg = "#113c47",
+	pmenu_bg = "#268bd2",
+	folder_bg = "#268bd2",
 }
 
 M.base_16 = {
-	-- base00 - Default Background
-	base00 = "#201947",
-	-- base01 - Lighter Background (Used for status bars, line number and folding marks)
-	base01 = "#2b215f",
-	-- base02 - Selection Background
-	base02 = "#31266b",
-	-- base03 - Comments, Invisibles, Line Highlighting
-	base03 = "#8584ae",
-	-- base04 - Dark Foreground (Used for status bars)
-	base04 = "#33363c",
-	-- base05 - Default Foreground, Caret, Delimiters, Operators
-	base05 = "#dd00ff",
-	-- base06 - Light Foreground (Not often used)
-	base06 = "#dd00ff",
-	-- base07 - Light Background (Not often used)
-	base07 = "#dd00ff",
-	-- base08 - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-	base08 = "#dd00ff",
-	-- base09 - Integers, Boolean, Constants, XML Attributes, Markup Link Url
-	base09 = "#ffeb00",
-	-- base0A - Classes, Markup Bold, Search Text Background
-	base0A = "#37dcf6",
-	-- base0B - Strings, Inherited Class, Markup Code, Diff Inserted
-	base0B = "#9dc410",
-	-- base0C - Support, Regular Expressions, Escape Characters, Markup Quotes
-	base0C = "#c85106",
-	-- base0D - Functions, Methods, Attribute IDs, Headings
-	base0D = "#ff1371",
-	-- base0E - Keywords, Storage, Selector, Markup Italic, Diff Changed
-	base0E = "#b1a7ff",
-	-- base0F - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
-	base0F = "#b1a7ff",
-}
-
-M.polish_hl = {
-	["NonText"] = { fg = M.base_16.base03 },
-	["VimCommand"] = { fg = M.base_16.base03 },
-	["@tag.html"] = { fg = M.base_30.red },
-	["@tag.delimiter"] = { fg = M.base_30.pink },
-	["@function"] = { fg = M.base_30.orange },
-	["@parameter"] = { fg = M.base_16.base0F },
-	["@constructor"] = { fg = M.base_16.base0A },
-	["@tag.attribute"] = { fg = M.base_30.orange },
+	base00 = M.base_30.darker_black,
+	base01 = M.base_30.black2,
+	base02 = M.base_30.one_bg,
+	base03 = M.base_30.grey,
+	base04 = M.base_30.grey_fg,
+	base05 = M.base_30.greay_fg2,
+	base06 = "#eee8d5",
+	base07 = "#fdf6e3",
+	base08 = M.base_30.red,
+	base09 = M.base_30.orange,
+	base0A = "#b58900",
+	base0B = "#859900",
+	base0C = "#2aa198",
+	base0D = "#268bd2",
+	base0E = "#6c71c4",
+	base0F = "#d33682",
 }
 
 M.type = "dark"
