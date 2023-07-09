@@ -31,6 +31,11 @@ local plugins = {
 						callback()
 					end
 				end,
+
+				-- Disabled Enter
+				["<CR>"] = function(callback)
+					callback()
+				end,
 			},
 			sources = {
 				{ name = "copilot", priority = 10 },
@@ -89,7 +94,8 @@ local plugins = {
 
 	{
 		"zbirenbaum/copilot.lua",
-		lazy = false,
+		cmd = "Copilot",
+		event = "BufRead",
 		config = function()
 			require("copilot").setup({
 				suggestion = { enabled = false },
@@ -100,7 +106,7 @@ local plugins = {
 
 	{
 		"zbirenbaum/copilot-cmp",
-		lazy = false,
+		event = "InsertEnter",
 		config = function()
 			require("copilot_cmp").setup()
 		end,
