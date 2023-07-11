@@ -49,7 +49,21 @@ M.base_16 = {
 	base0C = "#2aa198",
 	base0D = "#268bd2",
 	base0E = "#6c71c4",
-	base0F = "#d33682",
+	base0F = M.base_30.red,
+}
+
+M.polish_hl = {
+	Folded = { fg = M.base_30.grey_fg2, bg = M.base_30.black2 },
+	TelescopeNormal = { fg = M.base_30.red, bg = M.base_30.black },
+	TelescopePrompt = { fg = M.base_30.one_bg, bg = M.base_30.cyan },
+	TelescopePromptNormal = { fg = M.base_30.red, bg = M.base_30.black2 },
+	TelescopePromptPrefix = { fg = M.base_30.red, bg = M.base_30.black2 },
+	TelescopeResults = { fg = M.base_30.red, bg = M.base_30.black },
+	["@constructor"] = { fg = M.base_16.base0A },
+	["@function"] = { fg = M.base_30.red },
+	["@parameter"] = { fg = M.base_16.base0F },
+	["@tag.attribute"] = { fg = M.base_30.orange },
+	["@tag.delimiter"] = { fg = M.base_30.cyan },
 }
 
 M.type = "dark"

@@ -1,9 +1,14 @@
 local M = {}
 
 M.ui = {
-	-- theme = "laser",
-	theme = "solarized_dark",
-	them_toggle = { "solarized_dark", "one_light" },
+	-- theme = "solarized_dark",
+	-- theme_toggle = { "solarized_dark", "one_light" },
+
+  -- For Laser theme only
+	theme = "laser",
+	statusline = {
+		theme = "vscode_colored",
+	},
 }
 
 M.plugins = "custom.plugins"
