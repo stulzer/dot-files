@@ -54,11 +54,12 @@ M.base_16 = {
 
 M.polish_hl = {
 	Folded = { fg = M.base_30.grey_fg2, bg = M.base_30.black2 },
-	TelescopeNormal = { fg = M.base_30.red, bg = M.base_30.black },
+	TelescopeNormal = { fg = M.base_30.light_grey, bg = M.base_30.black },
 	TelescopePrompt = { fg = M.base_30.one_bg, bg = M.base_30.cyan },
 	TelescopePromptNormal = { fg = M.base_30.red, bg = M.base_30.black2 },
 	TelescopePromptPrefix = { fg = M.base_30.red, bg = M.base_30.black2 },
 	TelescopeResults = { fg = M.base_30.red, bg = M.base_30.black },
+	TelescopeSelection = { fg = M.base_30.red },
 	NvimTreeNormal = { bg = M.base_30.black },
 	NvimTreeNormalNC = { bg = M.base_30.black },
 
@@ -139,9 +140,6 @@ M.polish_hl = {
 		bg = M.base_30.green,
 	},
 
-	["@constructor"] = { fg = M.base_16.base0A },
-	["@function"] = { fg = M.base_30.red },
-	["@parameter"] = { fg = M.base_16.base0F },
 	["@tag.attribute"] = { fg = M.base_30.orange },
 	["@tag.delimiter"] = { fg = M.base_30.cyan },
 }
