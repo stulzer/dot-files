@@ -59,6 +59,86 @@ M.polish_hl = {
 	TelescopePromptNormal = { fg = M.base_30.red, bg = M.base_30.black2 },
 	TelescopePromptPrefix = { fg = M.base_30.red, bg = M.base_30.black2 },
 	TelescopeResults = { fg = M.base_30.red, bg = M.base_30.black },
+	NvimTreeNormal = { bg = M.base_30.black },
+	NvimTreeNormalNC = { bg = M.base_30.black },
+
+	StatusLine = {
+		bg = M.base_30.statusline_bg,
+	},
+
+	St_gitIcons = {
+		fg = M.base_30.light_grey,
+		bg = M.base_30.statusline_bg,
+		bold = true,
+	},
+
+	St_LspStatus = {
+		fg = M.base_30.nord_blue,
+		bg = M.base_30.statusline_bg,
+	},
+
+	St_LspProgress = {
+		fg = M.base_30.green,
+		bg = M.base_30.statusline_bg,
+	},
+
+	St_LspStatus_Icon = {
+		fg = M.base_30.black,
+		bg = M.base_30.nord_blue,
+	},
+
+	St_EmptySpace = {
+		fg = M.base_30.grey,
+		bg = M.base_30.lightbg,
+	},
+
+	St_EmptySpace2 = {
+		fg = M.base_30.grey,
+		bg = M.base_30.statusline_bg,
+	},
+
+	St_file_info = {
+		bg = M.base_30.lightbg,
+		fg = M.base_30.nord_blue,
+	},
+
+	St_file_sep = {
+		bg = M.base_30.statusline_bg,
+		fg = M.base_30.lightbg,
+	},
+
+	St_cwd_icon = {
+		fg = M.base_30.one_bg,
+		bg = M.base_30.red,
+	},
+
+	St_cwd_text = {
+		fg = M.base_30.one_bg,
+		bg = M.base_30.red,
+		-- fg = M.base_30.nord_blue,
+		-- bg = M.base_30.lightbg,
+	},
+
+	St_cwd_sep = {
+		fg = M.base_30.red,
+		bg = M.base_30.statusline_bg,
+	},
+
+	St_pos_sep = {
+		fg = M.base_30.green,
+		bg = M.base_30.red,
+	},
+
+	St_pos_icon = {
+		fg = M.base_30.black,
+		bg = M.base_30.green,
+	},
+
+	St_pos_text = {
+		fg = M.base_30.lightbg,
+		bg = M.base_30.green,
+	},
+
 	["@constructor"] = { fg = M.base_16.base0A },
 	["@function"] = { fg = M.base_30.red },
 	["@parameter"] = { fg = M.base_16.base0F },
