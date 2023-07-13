@@ -116,8 +116,6 @@ M.polish_hl = {
 	St_cwd_text = {
 		fg = M.base_30.one_bg,
 		bg = M.base_30.red,
-		-- fg = M.base_30.nord_blue,
-		-- bg = M.base_30.lightbg,
 	},
 
 	St_cwd_sep = {
@@ -138,6 +136,20 @@ M.polish_hl = {
 	St_pos_text = {
 		fg = M.base_30.lightbg,
 		bg = M.base_30.green,
+	},
+
+	TbLineThemeToggleBtn = { fg = M.base_30.red },
+
+	MatchWord = { fg = M.base_30.pink, bg = M.base_30.one_bg3 },
+
+	TbLineBufOn = {
+		fg = M.base_30.light_grey,
+		bg = M.base_30.black,
+	},
+
+	TbLineBufOff = {
+		fg = M.base_30.grey_fg,
+		bg = M.base_30.black2,
 	},
 
 	["@tag.attribute"] = { fg = M.base_30.orange },
