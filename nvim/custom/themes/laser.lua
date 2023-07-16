@@ -2,20 +2,20 @@ local M = {}
 
 M.base_30 = {
 	white = "#48379e",
-	darker_black = "#201947", -- darker_black = 6% darker than black
-	black = "#231b4d", -- black = usually your theme bg
-	black2 = "#2b215f", -- black2 = 6% lighter than black
-	one_bg = "#31266b", -- onebg = 10% lighter than black
-	one_bg2 = "#3d2f86", -- oneb2 = 19% lighter than black
-	one_bg3 = "#48379e", -- oneb3 = 27% lighter than black
-	grey = "#3d2f86", -- grey = 40% lighter than black (the % here depends so choose the perfect grey!)
-	grey_fg = "#48379e", -- grey_fg = 10% lighter than grey
-	grey_fg2 = "#6251B8", -- grey_fg2 = 20% lighter than grey
-	light_grey = "#7B6AD1", -- light_grey = 28% lighter than grey
+	darker_black = "#201947",
+	black = "#231b4d",
+	black2 = "#2b215f",
+	one_bg = "#31266b",
+	one_bg2 = "#3d2f86",
+	one_bg3 = "#48379e",
+	grey = "#3d2f86",
+	grey_fg = "#48379e",
+	grey_fg2 = "#6251B8",
+	light_grey = "#7B6AD1",
 	red = "#ff047d",
-	baby_pink = "#ff1d8a", -- baby_pink = 15% lighter than red or any babypink color you like!
+	baby_pink = "#ff1d8a",
 	pink = "#e61d7e",
-	line = "#2b215f", -- for lines like vertsplit
+	line = "#2b215f",
 	green = "#859900",
 	vibrant_green = "#b2c62d",
 	nord_blue = "#197ec5",
