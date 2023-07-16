@@ -50,7 +50,6 @@ function Runner()
 		commands = string.sub(commands, 1, -5)
 
 		-- Open a new split and run the commands
-		vim.api.nvim_command(":sp")
 		vim.api.nvim_command("terminal " .. commands)
 
 		file:close()
@@ -92,6 +91,9 @@ M.general = {
 		["L"] = { "$", "Beginning of Line" },
 		["<leader>md"] = { "<cmd>silent !mkdir -p %%<CR> :redraw! <CR>", "Create current directory" },
 		["<leader>l"] = { "<cmd>set list!<CR>", "Show invisibles" },
+		["+"] = { "<C-a>", "Add to a number on the line" },
+		["-"] = { "<C-x>", "Subtract from a number on the line" },
+		["_"] = { "<C-x>", "Subtract from a number on the line" },
 	},
 
 	-- Visual mode mappings
