@@ -153,7 +153,10 @@ M.polish_hl = {
 	},
 
 	["@tag.attribute"] = { fg = M.base_30.orange },
-	["@tag.delimiter"] = { fg = M.base_30.cyan },
+	["@tag.delimiter"] = { fg = M.base_30.red },
+	["@constructor"] = { fg = M.base_30.pink },
+	["Tag"] = { fg = M.base_30.red },
+	["Label"] = { fg = M.base_30.red },
 }
 
 M.type = "dark"
