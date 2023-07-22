@@ -94,6 +94,7 @@ M.general = {
 		["+"] = { "<C-a>", "Add to a number on the line" },
 		["-"] = { "<C-x>", "Subtract from a number on the line" },
 		["_"] = { "<C-x>", "Subtract from a number on the line" },
+		["<C-x>"] = { "<cmd>Inspect<CR>", "Show syntax stack" },
 	},
 
 	-- Visual mode mappings
