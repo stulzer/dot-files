@@ -7,18 +7,17 @@ mouse:
   hide_when_typing: true
 
 font:
-  size: 15
+  size: 20
   normal:
-    # family: InconsolataGo Nerd Font
-    family: SauceCodePro Nerd Font
+    family: InconsolataGo Nerd Font
     style: Regular
 
   bold:
-    family: SauceCodePro Nerd Font
+    family: InconsolataGo Nerd Font
     style: Bold
 
   italic:
-    family: SauceCodePro Nerd Font
+    family: InconsolataGo Nerd Font
     style: Italic
 
 colors:
@@ -44,7 +43,6 @@ colors:
   #   magenta: '0x6c71c4'
   #   cyan:    '0x93a1a1'
   #   white:   '0xfdf6e3'
-
 
   # Colors Laser
   primary:
@@ -80,9 +78,6 @@ colors:
     magenta: '#b1a7ff'
     cyan:    '#0092fb'
     white:   '#ebe5f2'
-
-  italic:
-    family: Inconsolata Nerd Font
 
 colors:
   # Colors (Solarized Dark)
