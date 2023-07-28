@@ -84,7 +84,7 @@ local plugins = {
 	{
 		"stulzer/vim-vroom",
 		branch = "develop",
-		ft = "ruby",
+		ft = "ruby,javascript,typescript,typescriptreact",
 		config = function()
 			vim.g.vroom_use_terminal = 1
 		end,
