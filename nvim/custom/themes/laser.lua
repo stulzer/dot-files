@@ -152,6 +152,8 @@ M.polish_hl = {
 		bg = M.base_30.black2,
 	},
 
+	NvDashAscii = { fg = M.base_30.red, bg = M.base_30.black2 },
+
 	["@tag.attribute"] = { fg = M.base_30.orange },
 	["@tag.delimiter"] = { fg = M.base_30.red },
 	["@constructor"] = { fg = M.base_30.pink },
