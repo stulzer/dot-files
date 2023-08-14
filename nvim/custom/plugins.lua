@@ -71,9 +71,7 @@ local plugins = {
 		end,
 	},
 
-	{ "tpope/vim-commentary", lazy = false },
-
-	{ "tpope/vim-fugitive", lazy = false },
+	{ "FabijanZulj/blame.nvim", lazy = false },
 
 	{ "tpope/vim-rails", ft = "ruby" },
 
