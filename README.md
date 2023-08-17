@@ -10,7 +10,7 @@ https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/InconsolataGo.z
 #### brew for macOS
 http://brew.sh/
 
-#### Install NVChad
+#### NVChad
 https://nvchad.com/
 
 #### Install Dependencies and create symlinks
@@ -19,7 +19,9 @@ https://nvchad.com/
 ```
 
 ### Installing Plugins on Neovim
+
 Just Fire Neovim
+
 ```
 nvim
 ```
