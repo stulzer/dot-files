@@ -79,8 +79,8 @@ end
 local randomHeader = headerNames[randomIndex]
 
 M.ui = {
-	theme = "laser",
-	theme_toggle = { "laser", "one_light" },
+	theme = "local_laser",
+	theme_toggle = { "local_laser", "one_light" },
 
 	nvdash = {
 		load_on_startup = true,
