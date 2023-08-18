@@ -75,9 +75,14 @@ local plugins = {
 
 	{ "tpope/vim-rails", ft = "ruby" },
 
-	{ "tpope/vim-repeat", lazy = false },
-
-	{ "tpope/vim-surround", lazy = false },
+	{
+		"kylechui/nvim-surround",
+		version = "*",
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	},
 
 	{
 		"stulzer/vim-vroom",
