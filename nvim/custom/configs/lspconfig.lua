@@ -18,3 +18,9 @@ lspconfig.ruby_ls.setup({
 	capabilities = capabilities,
 	filetypes = { "ruby" },
 })
+
+lspconfig.tailwindcss.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	filetypes = { "html", "css", "javascriptreact", "typescriptreact" },
+})
