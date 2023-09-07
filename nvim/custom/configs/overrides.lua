@@ -39,7 +39,6 @@ M.mason = {
 		"erb-lint",
 		"rubocop",
 		"ruby-lsp",
-		"solargraph",
 		"standardrb",
 	},
 }
