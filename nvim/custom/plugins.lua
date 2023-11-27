@@ -117,6 +117,15 @@ local plugins = {
 			require("copilot_cmp").setup()
 		end,
 	},
+
+	{
+		"stulzer/bundler-info.nvim",
+		ft = "ruby",
+		branch = "single-quotes",
+		config = function()
+			require("bundler-info").setup()
+		end,
+	},
 }
 
 return plugins
