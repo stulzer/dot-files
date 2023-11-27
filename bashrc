@@ -1,5 +1,3 @@
-source ~/.git-prompt.sh
-
 . ~/.etc/bashrc_macos
 
 export EDITOR=nvim
@@ -14,9 +12,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 . ~/.etc/bash/tmuxinator
 . ~/.etc/env/vars
 
-if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-  # disabling to warp
-  [[ -z "$TMUX" ]] && exec tmux
-fi
+[[ -z "$TMUX" ]] && exec tmux
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
