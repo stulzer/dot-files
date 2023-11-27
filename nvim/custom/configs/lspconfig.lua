@@ -14,11 +14,13 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.ruby_ls.setup({
-	on_attach = function(client)
-		if client.supports_method("textDocument/semanticTokens") then
-			client.server_capabilities.semanticTokensProvider = nil
+	on_init = function(client)
+		if client.server_capabilities then
+			client.server_capabilities.documentFormattingProvider = false
+			client.server_capabilities.semanticTokensProvider = false
 		end
 	end,
+	on_attach = on_attach,
 	capabilities = capabilities,
 	filetypes = { "ruby" },
 })
