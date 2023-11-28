@@ -1,11 +1,8 @@
-# Using with Alacritty
+# Using with [kitty](https://sw.kovidgoyal.net/kitty/)
 
 ![Terminal Screenshot](https://raw.githubusercontent.com/stulzer/dot-files/master/screenshot.png)
 
 ## Dependencies
-
-#### Nerd Fonts
-https://www.nerdfonts.com/
 
 #### brew for macOS
 http://brew.sh/
@@ -18,7 +15,6 @@ http://brew.sh/
 ### Installing Plugins on Neovim
 
 Just Fire Neovim
-
 ```
 nvim
 ```
