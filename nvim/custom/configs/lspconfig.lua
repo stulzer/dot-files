@@ -13,18 +13,6 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
-lspconfig.ruby_ls.setup({
-	on_init = function(client)
-		if client.server_capabilities then
-			client.server_capabilities.documentFormattingProvider = false
-			client.server_capabilities.semanticTokensProvider = false
-		end
-	end,
-	on_attach = on_attach,
-	capabilities = capabilities,
-	filetypes = { "ruby" },
-})
-
 lspconfig.tailwindcss.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
