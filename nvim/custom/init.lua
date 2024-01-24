@@ -14,11 +14,15 @@ vim.opt.listchars = {
 -- set nolist
 vim.opt.list = false
 
--- set spelllang
+-- set spell lang
 vim.opt.spelllang = "en_us,de_de,pt_br"
 
--- set spell
-vim.opt.spell = true
+-- set no spell
+vim.opt.spell = false
+
+-- set spell on specific filetypes
+vim.api.nvim_command("autocmd BufRead,BufNewFile Dockerfile,Makefile,*.c,*.cfg,*.cjs,*.cmake,*.cpp,*.cs,*.css,*.csv,*.ejs,*.gemspec,*.haml,*.hbs,*.hpp,*.html,*.java,*.js,*.json,*.jst,*.jsx,*.log,*.md,*.mjs,*.php,*.pl,*.podspec,*.py,*.rabl,*.rake,*.rb,*.rdoc,*.ru,*.sass,*.scss,*.slim,*.toml,*.tpl,*.ts,*.tsx,*.txt,*.xml,*.yaml,*.yml setlocal spell")
+vim.api.nvim_command("autocmd FileType gitcommit setlocal spell")
 
 -- Correcting typos on common commands
 vim.api.nvim_command("command! -bang -nargs=* -complete=file E e<bang> <args>")
