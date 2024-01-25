@@ -37,7 +37,6 @@ M.mason = {
 
 		-- ruby
 		"erb-lint",
-		"ruby-lsp",
 		"rubocop",
 		"standardrb",
 	},
