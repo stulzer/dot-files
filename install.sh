@@ -36,6 +36,6 @@ ln -s ~/.etc/.tool-versions .tool-versions
 ln -s ~/.etc/.asdfrc .asdfrc
 ln -s ~/.etc/.default-gems .default-gems
 ln -s ~/.etc/.default-npm-packages .default-npm-packages
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+git clone -b v2.0 https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 ln -s ~/.etc/nvim/custom ~/.config/nvim/lua/custom
-ECHO 'Yey, good to go! Launch kitty and enjoy!
+ECHO 'Yey, good to go!'
