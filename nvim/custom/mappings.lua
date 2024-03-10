@@ -25,7 +25,7 @@ end
 
 -- Pipes current buffer into jq to format json used on <leader>j below
 function FormatJSON()
-  vim.api.nvim_command "%! jq"
+  vim.api.nvim_command "%! jq -S"
 end
 
 -- Reads a .runner file on the root of the project and runs it as bash with && for each line as a command
