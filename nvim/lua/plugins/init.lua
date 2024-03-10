@@ -1,7 +1,21 @@
-local overrides = require "custom.configs.overrides"
+local overrides = require "configs.overrides"
 local cmp = require "cmp"
 
-local plugins = {
+return {
+  {
+    "stevearc/conform.nvim",
+    config = function()
+      require "configs.conform"
+    end,
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      git = { enable = true },
+    },
+  },
+
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -9,13 +23,13 @@ local plugins = {
       {
         "jose-elias-alvarez/null-ls.nvim",
         config = function()
-          require "custom.configs.null-ls"
+          require "configs.null-ls"
         end,
       },
     },
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+      require('nvchad.configs.lspconfig').defaults()
+      require "configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
 
@@ -192,5 +206,3 @@ local plugins = {
     },
   },
 }
-
-return plugins
