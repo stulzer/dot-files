@@ -7,7 +7,7 @@ alias ev='nvim ~/.etc/env/vars && reload'       # Edit environments variables
 alias vim='nvim'
 alias vimconf='nvim ~/.etc/nvim/init.vim'
 alias v='nvim'
-alias fixvimspells='curl "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl" -o ~/.config/nvim/spell/de.utf-8.spl && curl "http://ftp.vim.org/pub/vim/runtime/spell/pt.utf-8.spl" -o ~/.config/nvim/spell/pt.utf-8.spl'
+alias fixvimspells='mkdir -p ~/.config/nvim/spell && curl "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl" -o ~/.config/nvim/spell/de.utf-8.spl && curl "http://ftp.vim.org/pub/vim/runtime/spell/pt.utf-8.spl" -o ~/.config/nvim/spell/pt.utf-8.spl'
 
 # List
 alias ls='ls -lahG'
