@@ -28,7 +28,7 @@ return {
       },
     },
     config = function()
-      require('nvchad.configs.lspconfig').defaults()
+      require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
@@ -52,9 +52,9 @@ return {
         end,
       },
       sources = {
-        { name = "copilot",  priority = 10 },
+        { name = "copilot", priority = 10 },
         { name = "nvim_lsp", priority = 9 },
-        { name = "luasnip",  priority = 5 },
+        { name = "luasnip", priority = 5 },
         { name = "path" },
         { name = "buffer" },
       },
@@ -98,7 +98,7 @@ return {
 
   { "FabijanZulj/blame.nvim", lazy = false },
 
-  { "tpope/vim-rails",        ft = "ruby" },
+  { "tpope/vim-rails", ft = "ruby" },
 
   {
     "kylechui/nvim-surround",
@@ -173,33 +173,21 @@ return {
       },
     },
     keys = {
-      { "<leader>ccb", ":CopilotChatBuffer ",         desc = "CopilotChat - Chat with current buffer" },
-      { "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-      { "<leader>cct", "<cmd>CopilotChatTests<cr>",   desc = "CopilotChat - Generate tests" },
+      { "<leader>cpe", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
+      { "<leader>cpt", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
       {
-        "<leader>ccT",
-        "<cmd>CopilotChatVsplitToggle<cr>",
-        desc = "CopilotChat - Toggle Vsplit", -- Toggle vertical split
-      },
-      {
-        "<leader>ccv",
-        ":CopilotChatVisual ",
-        mode = "x",
-        desc = "CopilotChat - Open in vertical split",
-      },
-      {
-        "<leader>ccx",
+        "<leader>cpi",
         ":CopilotChatInPlace<cr>",
         mode = "x",
         desc = "CopilotChat - Run in-place code",
       },
       {
-        "<leader>ccf",
+        "<leader>cpf",
         "<cmd>CopilotChatFixDiagnostic<cr>", -- Get a fix for the diagnostic message under the cursor.
         desc = "CopilotChat - Fix diagnostic",
       },
       {
-        "<leader>ccr",
+        "<leader>cpr",
         "<cmd>CopilotChatReset<cr>", -- Reset chat history and clear buffer.
         desc = "CopilotChat - Reset chat history and clear buffer",
       },

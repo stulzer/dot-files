@@ -83,8 +83,13 @@ M.ui = {
   theme_toggle = { "local-laser", "one_light" },
 
   nvdash = {
-    load_on_startup = false,
+    load_on_startup = true,
     header = headers[randomHeader],
+  },
+  hl_override = {
+    SpecialChar = { fg = "green" },
+    ["@tag"] = { fg = "red" },
+    Structure = { fg = "#c4980f" },
   },
 }
 
