@@ -10,7 +10,7 @@ return {
   },
 
   {
-    "stulzer/indent-blankline.nvim",
+    "lukas-reineke/indent-blankline.nvim",
     event = "User FilePost",
     opts = {
       indent = { char = "│", highlight = "IblChar" },
@@ -21,8 +21,10 @@ return {
 
       local hooks = require "ibl.hooks"
       hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
-      require("ibl").setup(opts)
+      local hl_group = "@ibl.scope.underline.1"
+      vim.api.nvim_set_hl(0, hl_group, { standout = true, underline = false })
 
+      require("ibl").setup(opts)
       dofile(vim.g.base46_cache .. "blankline")
     end,
   },
