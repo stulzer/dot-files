@@ -1,17 +1,19 @@
+-- based on DROP + MITO GMK LASER CUSTOM KEYCAP SET
+
 local M = {}
 
 M.base_30 = {
-  white = "#48379e",
-  darker_black = "#201947",
-  black = "#231b4d",
-  black2 = "#2b215f",
-  one_bg = "#31266b",
-  one_bg2 = "#3d2f86",
-  one_bg3 = "#48379e",
-  grey = "#3d2f86",
-  grey_fg = "#48379e",
-  grey_fg2 = "#6251B8",
-  light_grey = "#7B6AD1",
+  white = "#897bd1",
+  darker_black = "#1d1741",
+  black = "#201947",
+  black2 = "#271e56",
+  one_bg = "#2e2466",
+  one_bg2 = "#352975",
+  one_bg3 = "#3e318a",
+  grey = "#423494",
+  grey_fg = "#4c3ca9",
+  grey_fg2 = "#5442bb",
+  light_grey = "#6d5dc6",
   red = "#ff047d",
   baby_pink = "#ff1d8a",
   pink = "#e61d7e",
@@ -27,21 +29,21 @@ M.base_30 = {
   teal = "#74c5aa",
   orange = "#c85106",
   cyan = "#37dcf6",
-  statusline_bg = "#042f3a",
-  lightbg = "#113c47",
+  statusline_bg = "#271e56",
+  lightbg = "#352975",
   pmenu_bg = "#268bd2",
   folder_bg = "#268bd2",
 }
 
 M.base_16 = {
-  base00 = M.base_30.darker_black,
+  base00 = M.base_30.black,
   base01 = M.base_30.black2,
   base02 = M.base_30.one_bg,
-  base03 = M.base_30.grey,
-  base04 = M.base_30.grey_fg,
-  base05 = M.base_30.greay_fg2,
+  base03 = M.base_30.one_bg2,
+  base04 = M.base_30.one_bg3,
+  base05 = M.base_30.white,
   base06 = "#eee8d5",
-  base07 = "#fdf6e3",
+  base07 = "#efe9d8",
   base08 = M.base_30.red,
   base09 = M.base_30.orange,
   base0A = "#b58900",
@@ -162,5 +164,7 @@ M.polish_hl = {
 }
 
 M.type = "dark"
+
+M = require("base46").override_theme(M, "mito-laser")
 
 return M

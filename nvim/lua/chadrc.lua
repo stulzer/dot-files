@@ -79,17 +79,22 @@ end
 local randomHeader = headerNames[randomIndex]
 
 M.ui = {
-  theme = "local_laser",
-  theme_toggle = { "local_laser", "one_light" },
+  theme = "local-laser",
+  theme_toggle = { "local-laser", "one_light" },
 
   nvdash = {
-    load_on_startup = false,
+    load_on_startup = true,
     header = headers[randomHeader],
+  },
+  hl_override = {
+    SpecialChar = { fg = "green" },
+    ["@tag"] = { fg = "red" },
+    Structure = { fg = "#c4980f" },
   },
 }
 
-M.plugins = "custom.plugins"
+M.plugins = "plugins"
 
-M.mappings = require "custom.mappings"
+M.mappings = require "mappings"
 
 return M
