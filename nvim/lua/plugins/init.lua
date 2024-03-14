@@ -10,6 +10,24 @@ return {
   },
 
   {
+    "stulzer/indent-blankline.nvim",
+    event = "User FilePost",
+    opts = {
+      indent = { char = "│", highlight = "IblChar" },
+      scope = { char = "│", highlight = "IblScopeChar" },
+    },
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "blankline")
+
+      local hooks = require "ibl.hooks"
+      hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+      require("ibl").setup(opts)
+
+      dofile(vim.g.base46_cache .. "blankline")
+    end,
+  },
+
+  {
     "nvim-tree/nvim-tree.lua",
     opts = {
       git = { enable = true },
@@ -52,9 +70,9 @@ return {
         end,
       },
       sources = {
-        { name = "copilot", priority = 10 },
+        { name = "copilot",  priority = 10 },
         { name = "nvim_lsp", priority = 9 },
-        { name = "luasnip", priority = 5 },
+        { name = "luasnip",  priority = 5 },
         { name = "path" },
         { name = "buffer" },
       },
@@ -98,7 +116,7 @@ return {
 
   { "FabijanZulj/blame.nvim", lazy = false },
 
-  { "tpope/vim-rails", ft = "ruby" },
+  { "tpope/vim-rails",        ft = "ruby" },
 
   {
     "kylechui/nvim-surround",
@@ -174,7 +192,7 @@ return {
     },
     keys = {
       { "<leader>cpe", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-      { "<leader>cpt", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
+      { "<leader>cpt", "<cmd>CopilotChatTests<cr>",   desc = "CopilotChat - Generate tests" },
       {
         "<leader>cpi",
         ":CopilotChatInPlace<cr>",

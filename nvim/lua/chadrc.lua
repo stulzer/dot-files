@@ -83,7 +83,7 @@ M.ui = {
   theme_toggle = { "local-laser", "one_light" },
 
   nvdash = {
-    load_on_startup = true,
+    load_on_startup = false,
     header = headers[randomHeader],
   },
   hl_override = {
