@@ -25,6 +25,7 @@ return {
       vim.api.nvim_set_hl(0, hl_group, { standout = true, underline = false })
 
       require("ibl").setup(opts)
+
       dofile(vim.g.base46_cache .. "blankline")
     end,
   },

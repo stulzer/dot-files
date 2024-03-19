@@ -80,7 +80,6 @@ local randomHeader = headerNames[randomIndex]
 
 M.ui = {
   theme = "local-laser",
-  theme_toggle = { "local-laser", "one_light" },
 
   nvdash = {
     load_on_startup = false,

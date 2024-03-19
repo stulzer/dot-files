@@ -78,6 +78,25 @@ vim.api.nvim_command "command! -bang Qa qa<bang>"
 vim.api.nvim_command "command! -bang Bd bd<bang>"
 vim.api.nvim_command "command! Gblame ToggleBlame window"
 
+-- CopilotChat short commands
+vim.api.nvim_command "command! CC CopilotChat"
+vim.api.nvim_command "command! CCClose CopilotChatClose"
+vim.api.nvim_command "command! CCCommit CopilotChatCommit"
+vim.api.nvim_command "command! CCCommitStaged CopilotChatCommitStaged"
+vim.api.nvim_command "command! CCDebugInfo CopilotChatDebugInfo"
+vim.api.nvim_command "command! CCDocs CopilotChatDocs"
+vim.api.nvim_command "command! CCExplain CopilotChatExplain"
+vim.api.nvim_command "command! CCFix CopilotChatFix"
+vim.api.nvim_command "command! CCFixDiagnostic CopilotChatFixDiagnostic"
+vim.api.nvim_command "command! CCOpen CopilotChatOpen"
+vim.api.nvim_command "command! CCOptimize CopilotChatOptimize"
+vim.api.nvim_command "command! CCReset CopilotChatReset"
+vim.api.nvim_command "command! CCTests CopilotChatTests"
+vim.api.nvim_command "command! CCToggle CopilotChatToggle"
+
+
+
+
 vim.cmd [[ autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif ]]
 
 -- set no clipboard
