@@ -67,12 +67,24 @@ map("n", "<leader>cR", "<cmd>lua ShowRoutes()<CR>", { desc = "Show routes" })
 map("n", "<leader>j", "<cmd>lua FormatJSON()<CR>", { desc = "Formats current buffer in JSON via jq" })
 map("n", "<leader>R", "<cmd>lua Runner()<CR>", { desc = "Detect a .runner file and execute it" })
 map("n", "<C-p>", "<cmd> Telescope find_files <CR>", { desc = "Find files" })
-map("n", "<leader>cm", "<cmd>lua require 'telescope.builtin'.find_files{ cwd = 'app/models' } <CR>",
-  { desc = "Find Models" })
-map("n", "<leader>ct", "<cmd>lua require 'telescope.builtin'.find_files{ cwd = 'app/controllers' } <CR>",
-  { desc = "Find Controllers" })
-map("n", "<leader>cv", "<cmd>lua require 'telescope.builtin'.find_files{ cwd = 'app/views' } <CR>",
-  { desc = "Find Views" })
+map(
+  "n",
+  "<leader>cm",
+  "<cmd>lua require 'telescope.builtin'.find_files{ cwd = 'app/models' } <CR>",
+  { desc = "Find Models" }
+)
+map(
+  "n",
+  "<leader>ct",
+  "<cmd>lua require 'telescope.builtin'.find_files{ cwd = 'app/controllers' } <CR>",
+  { desc = "Find Controllers" }
+)
+map(
+  "n",
+  "<leader>cv",
+  "<cmd>lua require 'telescope.builtin'.find_files{ cwd = 'app/views' } <CR>",
+  { desc = "Find Views" }
+)
 map("n", "<leader>cs", "<cmd>lua require 'telescope.builtin'.find_files{ cwd = 'spec/' } <CR>", { desc = "Find Specs" })
 map("n", "<leader>tt", "<cmd>tabnew <CR>", { desc = "New Native vim Tab" })
 map("n", "<leader>tc", "<cmd>tabclose <CR>", { desc = "Close Native vim Tab" })
@@ -103,3 +115,8 @@ map("v", "<leader>P", '"+P', { desc = "Paste above from system clipboard" })
 
 -- Command mode mappings
 map("c", "%%", "<C-R>=expand('%:h').'/'<cr>", { desc = "Show current file directory" })
+
+-- Rewrite default to handle LSP timeouts
+map("n", "<leader>fm", function()
+  require("conform").format { lsp_fallback = true, timeout_ms = 5000 }
+end, { desc = "Format Files" })
