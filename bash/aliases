@@ -83,3 +83,9 @@ alias renamejpg="rename -e 's/.*/$N.jpg/' *.jpg"
 
 # Rosetta brew
 alias rbrew='/usr/local/bin/brew'
+
+# Move files like "Metallica - One.gp3" to "Metallica/One.gp3"
+alias movetabs="rename -p 's| - |/|' *gp*"
+
+# iCloud cd
+alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'

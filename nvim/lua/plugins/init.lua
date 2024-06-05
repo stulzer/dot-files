@@ -73,9 +73,9 @@ return {
         end,
       },
       sources = {
-        { name = "copilot",  priority = 10 },
+        { name = "copilot", priority = 10 },
         { name = "nvim_lsp", priority = 9 },
-        { name = "luasnip",  priority = 5 },
+        { name = "luasnip", priority = 5 },
         { name = "path" },
         { name = "buffer" },
       },
@@ -94,17 +94,6 @@ return {
   },
 
   {
-    "nvim-treesitter/nvim-treesitter-context",
-    after = "nvim-treesitter",
-    lazy = false,
-    config = function()
-      require("treesitter-context").setup {
-        enable = true,
-      }
-    end,
-  },
-
-  {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
@@ -117,9 +106,15 @@ return {
     end,
   },
 
-  { "FabijanZulj/blame.nvim", lazy = false },
+  {
+    "FabijanZulj/blame.nvim",
+    config = function()
+      require("blame").setup()
+    end,
+    lazy = false,
+  },
 
-  { "tpope/vim-rails",        ft = "ruby" },
+  { "tpope/vim-rails", ft = "ruby" },
 
   {
     "kylechui/nvim-surround",
@@ -195,7 +190,7 @@ return {
     },
     keys = {
       { "<leader>cpe", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
-      { "<leader>cpt", "<cmd>CopilotChatTests<cr>",   desc = "CopilotChat - Generate tests" },
+      { "<leader>cpt", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
       {
         "<leader>cpi",
         ":CopilotChatInPlace<cr>",

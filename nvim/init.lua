@@ -76,7 +76,7 @@ vim.api.nvim_command "command! -bang Q q<bang>"
 vim.api.nvim_command "command! -bang QA qa<bang>"
 vim.api.nvim_command "command! -bang Qa qa<bang>"
 vim.api.nvim_command "command! -bang Bd bd<bang>"
-vim.api.nvim_command "command! Gblame ToggleBlame window"
+vim.api.nvim_command "command! Gblame BlameToggle window"
 
 -- CopilotChat short commands
 vim.api.nvim_command "command! CC CopilotChat"
@@ -93,9 +93,6 @@ vim.api.nvim_command "command! CCOptimize CopilotChatOptimize"
 vim.api.nvim_command "command! CCReset CopilotChatReset"
 vim.api.nvim_command "command! CCTests CopilotChatTests"
 vim.api.nvim_command "command! CCToggle CopilotChatToggle"
-
-
-
 
 vim.cmd [[ autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif ]]
 
