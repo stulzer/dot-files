@@ -122,3 +122,19 @@ map("c", "%%", "<C-R>=expand('%:h').'/'<cr>", { desc = "Show current file direct
 map("n", "<leader>fm", function()
   require("conform").format { lsp_fallback = true, timeout_ms = 5000 }
 end, { desc = "Format Files" })
+
+local function create_alternate_file()
+  local success, err = pcall(function() vim.api.nvim_command(":A") end)
+  if not success and err then
+    local file_path = err:match('E345: Can\'t find file "([^"]+)" in path')
+    if file_path then
+      vim.cmd('edit ' .. file_path)
+      vim.cmd('write')
+      print('Created file: ' .. file_path)
+    else
+      print('Error: ' .. err)
+    end
+  end
+end
+
+vim.api.nvim_create_user_command('CA', create_alternate_file, { bang = true })
