@@ -2,17 +2,18 @@ require "nvchad.mappings"
 
 -- Show Rails Routes function used on <leader>cR below
 function ShowRoutes()
-  vim.api.nvim_command ":topleft 100 :split __Routes__"
-  vim.api.nvim_command ":set buftype=nofile"
-  vim.api.nvim_command ":normal 1GdG"
-  vim.api.nvim_command ":0r! bundle exec rails routes"
-  vim.api.nvim_command ':exec ":normal " . line("$") . "^W_ "'
-  vim.api.nvim_command ":normal 1GG"
-  vim.api.nvim_command ":normal dd"
-  vim.api.nvim_command ":normal gg"
-  vim.api.nvim_command ":normal /Prefix"
-  vim.api.nvim_command ":normal k"
-  vim.api.nvim_command ":normal dgg"
+  -- Create a new buffer and set it up
+  vim.api.nvim_command(":topleft 100 :new __Routes__")
+  vim.api.nvim_command(":setlocal buftype=nofile")
+  vim.api.nvim_command(":setlocal bufhidden=wipe")
+  vim.api.nvim_command(":setlocal noswapfile")
+
+  -- Run the rails routes command and populate the buffer
+  local output = vim.fn.systemlist("bundle exec rails routes")
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, output)
+
+  -- Adjust the window settings
+  vim.api.nvim_command(":exec 'normal! gg'")
 end
 
 -- Rename file function used on <leader>rn below
