@@ -174,6 +174,7 @@ return {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
     event = "VeryLazy",
+    commit = "ce68b1f5f3fe1aa7e27eccf19366f2a8ba94faac",
     dependencies = {
       { "zbirenbaum/copilot.lua" },
       { "nvim-lua/plenary.nvim" },
