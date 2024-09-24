@@ -147,6 +147,7 @@ return {
         filetypes = {
           ["*"] = true,
         },
+        copilot_node_command = vim.fn.system("asdf where nodejs 22.0.0"):gsub("%s+", "") .. "/bin/node",
       }
     end,
   },
