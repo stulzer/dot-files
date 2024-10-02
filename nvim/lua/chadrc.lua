@@ -85,11 +85,19 @@ M.ui = {
     load_on_startup = false,
     header = headers[randomHeader],
   },
+
   hl_override = {
     SpecialChar = { fg = "green" },
     ["@tag"] = { fg = "red" },
     Structure = { fg = "#c4980f" },
   },
+
+  cmp = {
+    format_colors = {
+      tailwind = true,
+    },
+  },
+
 }
 
 M.plugins = "plugins"
