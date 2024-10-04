@@ -12,11 +12,15 @@ if vim.fn.filereadable "Gemfile" == 1 then
   local gemfile = io.open("Gemfile", "r"):read "*a"
 
   if string.find(gemfile, "rubocop") then
-    table.insert(sources, b.formatting.rubocop)
     table.insert(sources, b.diagnostics.rubocop)
-  else
-    table.insert(sources, b.formatting.standardrb)
+  end
+
+  if string.find(gemfile, "standard") then
     table.insert(sources, b.diagnostics.standardrb)
+  end
+
+  if string.find(gemfile, "reek") then
+    table.insert(sources, b.diagnostics.reek)
   end
 end
 
