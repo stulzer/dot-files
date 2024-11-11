@@ -5,7 +5,8 @@ M.nvdash = {
 }
 
 M.ui = {
-  theme = "local-laser",
+  theme = "onedark",
+  theme_toggle = { "onedark", "one_light" },
 
   hl_override = {
     SpecialChar = { fg = "green" },
