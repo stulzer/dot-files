@@ -1,12 +1,15 @@
 local M = {}
 
 M.nvdash = {
-  load_on_startup = false,
+  load_on_startup = true,
+}
+
+M.base46 = {
+  theme = "onenord",
+  theme_toggle = { "onenord", "onenord_light" },
 }
 
 M.ui = {
-  theme = "onedark",
-  theme_toggle = { "onedark", "one_light" },
 
   hl_override = {
     SpecialChar = { fg = "green" },
