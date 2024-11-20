@@ -5,8 +5,8 @@ M.nvdash = {
 }
 
 M.base46 = {
-  theme = "onenord",
-  theme_toggle = { "onenord", "onenord_light" },
+  theme = "kanagawa",
+  theme_toggle = { "kanagawa", "onenord_light" },
 }
 
 M.ui = {
