@@ -1,7 +1,46 @@
 local M = {}
 
+local headers = {
+  international = {
+    "                                             ",
+    "  ┌─┐┌─┐┌─┐┌─┐┌─┐  ┌─┐┌┬┐┌─┐┌┐┌┌─┐  ┬ ┬┌─┐   ",
+    "  ├─┘├┤ ├─┤│  ├┤   ├─┤││││ │││││ ┬  │ │└─┐   ",
+    "  ┴  └─┘┴ ┴└─┘└─┘  ┴ ┴┴ ┴└─┘┘└┘└─┘  └─┘└─┘┘  ",
+    "  ┬ ┬┌─┐┬─┐  ┌─┐┌┐┌  ┌┬┐┬ ┬┬─┐┌─┐┌┐┌┌┬┐┌─┐   ",
+    "  │││├─┤├┬┘  │ ││││   │ └┬┘├┬┘├─┤│││ │ └─┐   ",
+    "  └┴┘┴ ┴┴└─  └─┘┘└┘   ┴  ┴ ┴└─┴ ┴┘└┘ ┴ └─┘┘  ",
+    "                                             ",
+  },
+  nvchad = {
+    "                            ",
+    "     ▄▄         ▄ ▄▄▄▄▄▄▄   ",
+    "   ▄▀███▄     ▄██ █████▀    ",
+    "   ██▄▀███▄   ███           ",
+    "   ███  ▀███▄ ███           ",
+    "   ███    ▀██ ███           ",
+    "   ███      ▀ ███           ",
+    "   ▀██ █████▄▀█▀▄██████▄    ",
+    "     ▀ ▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀   ",
+    "                            ",
+    "     Powered By  eovim    ",
+    "                            ",
+  },
+}
+
+-- Generate a random index to choose between the headers
+local randomIndex = math.random(1, #headers)
+
+-- Get the header name based on the random index
+local headerNames = {}
+for key, _ in pairs(headers) do
+  table.insert(headerNames, key)
+end
+
+local randomHeader = headerNames[randomIndex]
+
 M.nvdash = {
   load_on_startup = true,
+  header = headers[randomHeader],
 }
 
 M.base46 = {
@@ -10,7 +49,6 @@ M.base46 = {
 }
 
 M.ui = {
-
   hl_override = {
     SpecialChar = { fg = "green" },
     ["@tag"] = { fg = "red" },
