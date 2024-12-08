@@ -39,13 +39,13 @@ end
 local randomHeader = headerNames[randomIndex]
 
 M.nvdash = {
-  load_on_startup = true,
+  load_on_startup = false,
   header = headers[randomHeader],
 }
 
 M.base46 = {
-  theme = "onenord",
-  theme_toggle = { "onenord", "onenord_light" },
+  theme = "local-laser",
+  theme_toggle = { "local-laser", "local-laser-light" },
 }
 
 M.ui = {
