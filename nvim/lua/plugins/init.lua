@@ -217,6 +217,9 @@ return {
     version = false, -- set this if you want to always pull the latest change
     opts = {
       provider = "copilot",
+      copilot = {
+        model = "claude-3.5-sonnet",
+      },
     },
     build = "make",
     dependencies = {
