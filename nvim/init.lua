@@ -81,6 +81,7 @@ vim.api.nvim_command "command! Gblame BlameToggle window"
 -- CopilotChat short commands
 vim.api.nvim_command "command! CC CopilotChat"
 vim.api.nvim_command "command! CCClose CopilotChatClose"
+vim.api.nvim_command "command! CCM CopilotChatModels"
 vim.api.nvim_command "command! CCCommit CopilotChatCommit"
 vim.api.nvim_command "command! CCDebugInfo CopilotChatDebugInfo"
 vim.api.nvim_command "command! CCDocs CopilotChatDocs"
