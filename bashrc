@@ -1,3 +1,7 @@
+if [ -z "$TMUX" ]; then
+  unset POSIXLY_CORRECT
+fi
+
 . ~/.etc/bashrc_macos
 
 export EDITOR=nvim
