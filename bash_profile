@@ -6,3 +6,6 @@ fi
 
 # Added by Windsurf
 export PATH="/Users/stulzer/.codeium/windsurf/bin:$PATH"
+
+# Added by Windsurf
+export PATH="/Users/stz/.codeium/windsurf/bin:$PATH"

@@ -21,7 +21,12 @@ export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 
 . /opt/homebrew/etc/bash_completion.d/*
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
+
+export CPPFLAGS="-I/opt/homebrew/include"
+export LDFLAGS="-L/opt/homebrew/lib"
 
 if type brew &>/dev/null; then
   for COMPLETION in $(brew --prefix)/etc/bash_completion.d/*
