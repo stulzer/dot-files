@@ -44,8 +44,6 @@ M.nvdash = {
 }
 
 M.base46 = {
-  -- theme = "onenord",
-  -- theme_toggle = { "onenord", "local-laser-light" },
   theme = "onenord",
   theme_toggle = { "onenord", "onenord_light" },
 }
