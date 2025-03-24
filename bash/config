@@ -74,7 +74,7 @@ export GIT_PS1_SHOWUPSTREAM=auto
 # 󱞵
 # 󱞪
 # 
-# 
+# 
 # 
 # 
 # 
@@ -84,6 +84,7 @@ export GIT_PS1_SHOWUPSTREAM=auto
 # 
 # 󰐂
 # 󱢇
+# 
 
 function ruby_version() {
   asdf current ruby | awk '/[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}/{ print $2 }'
