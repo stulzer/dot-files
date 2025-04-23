@@ -15,9 +15,7 @@
 /logs
 /tmp
 /public/uploads
-/config/database.yml
 public/uploads/
-config/database.yml
 *.swp
 *.swo
 *.swn
