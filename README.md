@@ -1,6 +1,6 @@
 # Using with [kitty](https://sw.kovidgoyal.net/kitty/)
 
-![Terminal Screenshot](https://raw.githubusercontent.com/stulzer/dot-files/master/screenshot.png)
+![Terminal Screenshot](https://github.com/user-attachments/assets/77431dfd-e00c-4d1f-b1be-8e9db4f46351)
 
 ## Dependencies
 
