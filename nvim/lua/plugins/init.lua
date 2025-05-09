@@ -1,7 +1,117 @@
 local overrides = require "configs.overrides"
-local cmp = require "cmp"
+-- Used with cmp configuration
+-- local cmp = require "cmp"
 
 return {
+  -- ##############################
+  -- nvim-cmp old configuration begin
+  -- ##############################
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   opts = {
+  --     mapping = {
+  --       -- Change tab behavior
+  --       ["<Tab>"] = function(callback)
+  --         if cmp.visible() then
+  --           cmp.confirm { select = true }
+  --         else
+  --           callback()
+  --         end
+  --       end,
+  --
+  --       -- Disabled Enter
+  --       ["<CR>"] = function(callback)
+  --         callback()
+  --       end,
+  --     },
+  --     sources = {
+  --       { name = "copilot", priority = 10 },
+  --       { name = "nvim_lsp", priority = 9 },
+  --       { name = "luasnip", priority = 5 },
+  --       { name = "path" },
+  --       { name = "buffer" },
+  --     },
+  --   },
+  -- },
+
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("copilot").setup {
+  --       suggestion = { enabled = false },
+  --       panel = { enabled = false },
+  --       filetypes = {
+  --         ["*"] = true,
+  --       },
+  --       copilot_node_command = vim.fn.system("asdf where nodejs 22.0.0"):gsub("%s+", "") .. "/bin/node",
+  --     }
+  --   end,
+  -- },
+
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("copilot_cmp").setup()
+  --   end,
+  -- },
+  -- ##############################
+  -- nvim-cmp old configuration end
+  -- ##############################
+  --
+
+  --
+  -- ##############################
+  -- experimenting with blink
+  -- ##############################
+  {
+    import = "nvchad.blink.lazyspec",
+  },
+
+  {
+    "saghen/blink.cmp",
+    dependencies = { "fang2hou/blink-copilot" },
+    opts = {
+      keymap = {
+        preset = "enter",
+        ["<Tab>"] = { "select_and_accept" },
+      },
+      sources = {
+        default = { "copilot" },
+        providers = {
+          copilot = {
+            name = "copilot",
+            module = "blink-copilot",
+            score_offset = 100,
+            async = true,
+          },
+        },
+      },
+    },
+  },
+
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+        filetypes = {
+          ["*"] = true,
+        },
+        copilot_node_command = vim.fn.system("asdf where nodejs 22.0.0"):gsub("%s+", "") .. "/bin/node",
+      }
+    end,
+  },
+  --
+  -- ##############################
+  -- end of blink configuration
+  -- ##############################
+
   {
     "stevearc/conform.nvim",
     config = function()
@@ -52,34 +162,6 @@ return {
       require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end, -- Override to setup mason-lspconfig
-  },
-
-  {
-    "hrsh7th/nvim-cmp",
-    opts = {
-      mapping = {
-        -- Change tab behavior
-        ["<Tab>"] = function(callback)
-          if cmp.visible() then
-            cmp.confirm { select = true }
-          else
-            callback()
-          end
-        end,
-
-        -- Disabled Enter
-        ["<CR>"] = function(callback)
-          callback()
-        end,
-      },
-      sources = {
-        { name = "copilot", priority = 10 },
-        { name = "nvim_lsp", priority = 9 },
-        { name = "luasnip", priority = 5 },
-        { name = "path" },
-        { name = "buffer" },
-      },
-    },
   },
 
   -- override plugin configs
@@ -135,30 +217,6 @@ return {
   },
 
   { "jremmen/vim-ripgrep", lazy = false },
-
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "BufRead",
-    config = function()
-      require("copilot").setup {
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-        filetypes = {
-          ["*"] = true,
-        },
-        copilot_node_command = vim.fn.system("asdf where nodejs 22.0.0"):gsub("%s+", "") .. "/bin/node",
-      }
-    end,
-  },
-
-  {
-    "zbirenbaum/copilot-cmp",
-    event = "InsertEnter",
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-  },
 
   {
     "stulzer/bundler-info.nvim",
