@@ -72,10 +72,11 @@ return {
 
   {
     "saghen/blink.cmp",
-    dependencies = { "fang2hou/blink-copilot" },
+    dependencies = { "Kaiser-Yang/blink-cmp-avante", "fang2hou/blink-copilot" },
     opts = {
       keymap = {
-        preset = "enter",
+        preset = "enter", -- whole preset is good except for enter :)
+        ["<CR>"] = {},
         ["<Tab>"] = { "select_and_accept" },
       },
       sources = {
@@ -86,6 +87,10 @@ return {
             module = "blink-copilot",
             score_offset = 100,
             async = true,
+          },
+          avante = {
+            module = "blink-cmp-avante",
+            name = "Avante",
           },
         },
       },
@@ -289,7 +294,7 @@ return {
       --- The below dependencies are optional,
       "echasnovski/mini.pick", -- for file_selector provider mini.pick
       "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      -- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
       "ibhagwan/fzf-lua", -- for file_selector provider fzf
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
       "zbirenbaum/copilot.lua", -- for providers='copilot'
