@@ -72,7 +72,8 @@ return {
 
   {
     "saghen/blink.cmp",
-    dependencies = { "Kaiser-Yang/blink-cmp-avante", "fang2hou/blink-copilot" },
+    -- dependencies = { "Kaiser-Yang/blink-cmp-avante", "fang2hou/blink-copilot" },
+    dependencies = { "fang2hou/blink-copilot" },
     opts = {
       keymap = {
         preset = "enter", -- whole preset is good except for enter :)
@@ -88,10 +89,10 @@ return {
             score_offset = 100,
             async = true,
           },
-          avante = {
-            module = "blink-cmp-avante",
-            name = "Avante",
-          },
+          -- avante = {
+          --   module = "blink-cmp-avante",
+          --   name = "Avante",
+          -- },
         },
       },
     },
@@ -276,6 +277,7 @@ return {
 
   {
     "yetone/avante.nvim",
+    enabled = false,
     event = "VeryLazy",
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
