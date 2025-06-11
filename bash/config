@@ -68,6 +68,7 @@ export GIT_PS1_SHOWUPSTREAM=auto
 # Possible nerd fonts icons for PS1
 # 
 # 
+# ›
 # 
 # 
 # 󰞔
@@ -92,4 +93,4 @@ function node_version() {
   asdf current nodejs | awk '/[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}/{ print $2 }'
 }
 
-PS1="$BRIGHT_BLUE\w$BRIGHT_GREEN $(echo ) \$(node_version)$BRIGHT_RED $(echo ) \$(ruby_version)$BRIGHT_YELLOW \$(__git_ps1 '$(echo ) %s ') \n${BRIGHT_RED} $RESET"
+PS1="$BRIGHT_BLUE\w$BRIGHT_GREEN $(echo ) \$(node_version)$BRIGHT_RED $(echo ) \$(ruby_version)$BRIGHT_YELLOW \$(__git_ps1 '$(echo ) %s ') \n${BRIGHT_RED}› $RESET"
