@@ -243,7 +243,7 @@ return {
       { "nvim-telescope/telescope.nvim" },
     },
     opts = {
-      model = "claude-3.5-sonnet",
+      model = "claude-sonnet-4",
       window = {
         layout = "float",
         relative = "cursor",
@@ -345,10 +345,16 @@ return {
         },
         strategies = {
           chat = {
-            adapter = "deepseek",
+            -- adapter = "deepseek",
+            adapter = "copilot",
           },
           inline = {
-            adapter = "deepseek",
+            -- adapter = "deepseek",
+            adapter = "copilot",
+          },
+          agent = {
+            -- adapter = "deepseek",
+            adapter = "copilot",
           },
         },
         display = {
