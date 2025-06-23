@@ -72,8 +72,8 @@ return {
 
   {
     "saghen/blink.cmp",
-    -- dependencies = { "Kaiser-Yang/blink-cmp-avante", "fang2hou/blink-copilot" },
-    dependencies = { "fang2hou/blink-copilot" },
+    dependencies = { "Kaiser-Yang/blink-cmp-avante", "fang2hou/blink-copilot" },
+    -- dependencies = { "fang2hou/blink-copilot" },
     opts = {
       keymap = {
         preset = "enter", -- whole preset is good except for enter :)
@@ -89,10 +89,10 @@ return {
             score_offset = 100,
             async = true,
           },
-          -- avante = {
-          --   module = "blink-cmp-avante",
-          --   name = "Avante",
-          -- },
+          avante = {
+            module = "blink-cmp-avante",
+            name = "Avante",
+          },
         },
       },
     },
@@ -254,55 +254,57 @@ return {
     },
   },
 
-  -- {
-  --   "yetone/avante.nvim",
-  --   enabled = true,
-  --   event = "VeryLazy",
-  --   lazy = false,
-  --   version = false, -- set this if you want to always pull the latest change
-  --   opts = {
-  --     provider = "copilot", -- or "ollama"
-  --     copilot = {
-  --       model = "claude-3.5-sonnet",
-  --     },
-  --     ollama = {
-  --       model = "hf.co/mradermacher/CodeFuse-DeepSeek-33B-GGUF:Q4_K_M",
-  --     },
-  --   },
-  --   build = "make",
-  --   dependencies = {
-  --     "nvim-treesitter/nvim-treesitter",
-  --     "stevearc/dressing.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "MunifTanjim/nui.nvim",
-  --     "echasnovski/mini.pick", -- for file_selector provider mini.pick
-  --     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-  --     "ibhagwan/fzf-lua", -- for file_selector provider fzf
-  --     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-  --     "zbirenbaum/copilot.lua", -- for providers='copilot'
-  --     {
-  --       "HakonHarnes/img-clip.nvim",
-  --       event = "VeryLazy",
-  --       opts = {
-  --         default = {
-  --           embed_image_as_base64 = false,
-  --           prompt_for_file_name = false,
-  --           drag_and_drop = {
-  --             insert_mode = true,
-  --           },
-  --           use_absolute_path = true,
-  --         },
-  --       },
-  --     },
-  --     {
-  --       "MeanderingProgrammer/render-markdown.nvim",
-  --       opts = {
-  --         file_types = { "markdown", "Avante" },
-  --       },
-  --       ft = { "markdown", "Avante" },
-  --     },
-  --   },
-  -- },
+  {
+    "yetone/avante.nvim",
+    enabled = true,
+    event = "VeryLazy",
+    lazy = false,
+    version = false, -- set this if you want to always pull the latest change
+    opts = {
+      provider = "copilot", -- or "ollama"
+      providers = {
+        copilot = {
+          model = "claude-sonnet-4",
+        },
+        ollama = {
+          model = "hf.co/mradermacher/CodeFuse-DeepSeek-33B-GGUF:Q4_K_M",
+        },
+      },
+    },
+    build = "make",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "echasnovski/mini.pick", -- for file_selector provider mini.pick
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "ibhagwan/fzf-lua", -- for file_selector provider fzf
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            use_absolute_path = true,
+          },
+        },
+      },
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
+  },
 
   {
     "olimorris/codecompanion.nvim",
