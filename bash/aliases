@@ -1,5 +1,5 @@
 # Utility
-alias reload='source ~/.etc/bash/aliases && source ~/.etc/env/vars'
+alias reload='source ~/.etc/bash/aliases && source ~/.etc/env/vars && source ~/.bash_profile'
 alias ea='nvim ~/.etc/bash/aliases && reload'   # Edit aliases
 alias ec='nvim ~/.etc/bash/config && reload'    # Edit config
 alias ef='nvim ~/.etc/bash/functions && reload' # Edit functions
