@@ -261,7 +261,8 @@ return {
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-      provider = "copilot", -- or "ollama"
+      -- provider = "copilot", -- or "ollama"
+      provider = "ollama",
       providers = {
         copilot = {
           model = "claude-sonnet-4",
@@ -347,16 +348,16 @@ return {
         },
         strategies = {
           chat = {
-            -- adapter = "deepseek",
-            adapter = "copilot",
+            adapter = "deepseek",
+            -- adapter = "copilot",
           },
           inline = {
-            -- adapter = "deepseek",
-            adapter = "copilot",
+            adapter = "deepseek",
+            -- adapter = "copilot",
           },
           agent = {
-            -- adapter = "deepseek",
-            adapter = "copilot",
+            adapter = "deepseek",
+            -- adapter = "copilot",
           },
         },
         display = {
