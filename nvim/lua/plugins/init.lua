@@ -262,7 +262,7 @@ return {
     version = false, -- set this if you want to always pull the latest change
     opts = {
       -- provider = "copilot", -- or "ollama"
-      provider = "ollama",
+      provider = "copilot",
       providers = {
         copilot = {
           model = "claude-sonnet-4",
@@ -319,22 +319,24 @@ return {
     config = function()
       require("codecompanion").setup {
         adapters = {
-          deepseek = function()
-            return require("codecompanion.adapters").extend("ollama", {
-              name = "CodeFuse-DeepSeek-33B-Q4_K_M",
-              schema = {
-                model = {
-                  default = "hf.co/mradermacher/CodeFuse-DeepSeek-33B-GGUF:Q4_K_M",
+          http = {
+            deepseek = function()
+              return require("codecompanion.adapters").extend("ollama", {
+                name = "CodeFuse-DeepSeek-33B-Q4_K_M",
+                schema = {
+                  model = {
+                    default = "hf.co/mradermacher/CodeFuse-DeepSeek-33B-GGUF:Q4_K_M",
+                  },
+                  num_ctx = {
+                    default = 16384,
+                  },
+                  num_predict = {
+                    default = -1,
+                  },
                 },
-                num_ctx = {
-                  default = 16384,
-                },
-                num_predict = {
-                  default = -1,
-                },
-              },
-            })
-          end,
+              })
+            end,
+          },
         },
         extensions = {
           mcphub = {

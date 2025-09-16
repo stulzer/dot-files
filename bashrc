@@ -9,6 +9,10 @@ export FZF_DEFAULT_OPTS="--height 40% --border --color=bg+:#251a50,border:#ff007
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+
 . ~/.git-prompt.sh
 . ~/.etc/bash/aliases
 . ~/.etc/bash/config
