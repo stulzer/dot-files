@@ -3,17 +3,17 @@ require "nvchad.mappings"
 -- Show Rails Routes function used on <leader>cR below
 function ShowRoutes()
   -- Create a new buffer and set it up
-  vim.api.nvim_command(":topleft 100 :new __Routes__")
-  vim.api.nvim_command(":setlocal buftype=nofile")
-  vim.api.nvim_command(":setlocal bufhidden=wipe")
-  vim.api.nvim_command(":setlocal noswapfile")
+  vim.api.nvim_command ":topleft 100 :new __Routes__"
+  vim.api.nvim_command ":setlocal buftype=nofile"
+  vim.api.nvim_command ":setlocal bufhidden=wipe"
+  vim.api.nvim_command ":setlocal noswapfile"
 
   -- Run the rails routes command and populate the buffer
-  local output = vim.fn.systemlist("bundle exec rails routes")
+  local output = vim.fn.systemlist "bundle exec rails routes"
   vim.api.nvim_buf_set_lines(0, 0, -1, false, output)
 
   -- Adjust the window settings
-  vim.api.nvim_command(":exec 'normal! gg'")
+  vim.api.nvim_command ":exec 'normal! gg'"
 end
 
 -- Rename file function used on <leader>rn below
@@ -120,22 +120,24 @@ map("v", "<leader>P", '"+P', { desc = "Paste above from system clipboard" })
 map("c", "%%", "<C-R>=expand('%:h').'/'<cr>", { desc = "Show current file directory" })
 
 -- Rewrite default to handle LSP timeouts
-map("n", "<leader>fm", function()
-  require("conform").format { lsp_fallback = true, timeout_ms = 5000 }
-end, { desc = "Format Files" })
+-- map("n", "<leader>fm", function()
+--   require("conform").format { lsp_fallback = true, timeout_ms = 5000 }
+-- end, { desc = "Format Files" })
 
 local function create_alternate_file()
-  local success, err = pcall(function() vim.api.nvim_command(":A") end)
+  local success, err = pcall(function()
+    vim.api.nvim_command ":A"
+  end)
   if not success and err then
-    local file_path = err:match('E345: Can\'t find file "([^"]+)" in path')
+    local file_path = err:match 'E345: Can\'t find file "([^"]+)" in path'
     if file_path then
-      vim.cmd('edit ' .. file_path)
-      vim.cmd('write')
-      print('Created file: ' .. file_path)
+      vim.cmd("edit " .. file_path)
+      vim.cmd "write"
+      print("Created file: " .. file_path)
     else
-      print('Error: ' .. err)
+      print("Error: " .. err)
     end
   end
 end
 
-vim.api.nvim_create_user_command('CA', create_alternate_file, { bang = true })
+vim.api.nvim_create_user_command("CA", create_alternate_file, { bang = true })

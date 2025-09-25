@@ -1,23 +1,13 @@
-local configs = require("nvchad.configs.lspconfig")
-
-local on_attach = configs.on_attach
-local on_init = configs.on_init
-local capabilities = configs.capabilities
-
-local lspconfig = require "lspconfig"
+require("nvchad.configs.lspconfig").defaults()
 
 local servers = { "html", "cssls", "ts_ls", "clangd" }
 
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_init = on_init,
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
+vim.lsp.enable(servers)
 
-lspconfig.tailwindcss.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
+vim.lsp.config("tailwindcss", {
   filetypes = { "html", "css", "javascriptreact", "typescriptreact" },
-}
+})
+
+vim.lsp.enable "tailwindcss"
+
+-- read :h vim.lsp.config for changing options of lsp servers

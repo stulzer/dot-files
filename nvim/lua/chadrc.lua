@@ -1,52 +1,16 @@
+-- This file needs to have same structure as nvconfig.lua 
+-- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
+-- Please read that file to know all available options :( 
+
+---@type ChadrcConfig
 local M = {}
-
-local headers = {
-  international = {
-    "                                             ",
-    "  ┌─┐┌─┐┌─┐┌─┐┌─┐  ┌─┐┌┬┐┌─┐┌┐┌┌─┐  ┬ ┬┌─┐   ",
-    "  ├─┘├┤ ├─┤│  ├┤   ├─┤││││ │││││ ┬  │ │└─┐   ",
-    "  ┴  └─┘┴ ┴└─┘└─┘  ┴ ┴┴ ┴└─┘┘└┘└─┘  └─┘└─┘┘  ",
-    "  ┬ ┬┌─┐┬─┐  ┌─┐┌┐┌  ┌┬┐┬ ┬┬─┐┌─┐┌┐┌┌┬┐┌─┐   ",
-    "  │││├─┤├┬┘  │ ││││   │ └┬┘├┬┘├─┤│││ │ └─┐   ",
-    "  └┴┘┴ ┴┴└─  └─┘┘└┘   ┴  ┴ ┴└─┴ ┴┘└┘ ┴ └─┘┘  ",
-    "                                             ",
-  },
-  nvchad = {
-    "                            ",
-    "     ▄▄         ▄ ▄▄▄▄▄▄▄   ",
-    "   ▄▀███▄     ▄██ █████▀    ",
-    "   ██▄▀███▄   ███           ",
-    "   ███  ▀███▄ ███           ",
-    "   ███    ▀██ ███           ",
-    "   ███      ▀ ███           ",
-    "   ▀██ █████▄▀█▀▄██████▄    ",
-    "     ▀ ▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀   ",
-    "                            ",
-    "     Powered By  eovim    ",
-    "                            ",
-  },
-}
-
--- Generate a random index to choose between the headers
-local randomIndex = math.random(1, #headers)
-
--- Get the header name based on the random index
-local headerNames = {}
-for key, _ in pairs(headers) do
-  table.insert(headerNames, key)
-end
-
-local randomHeader = headerNames[randomIndex]
-
-M.nvdash = {
-  load_on_startup = false,
-  header = headers[randomHeader],
-}
 
 M.base46 = {
   theme = "onenord",
   theme_toggle = { "onenord", "onenord_light" },
 }
+
+M.nvdash = { load_on_startup = false }
 
 M.ui = {
   hl_override = {
@@ -62,8 +26,5 @@ M.ui = {
   },
 }
 
-M.plugins = "plugins"
-
-M.mappings = require "mappings"
 
 return M
