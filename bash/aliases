@@ -1,21 +1,5 @@
-# Utility
-alias reload='source ~/.etc/bash/aliases && source ~/.etc/env/vars && source ~/.bash_profile'
-alias ea='nvim ~/.etc/bash/aliases && reload'   # Edit aliases
-alias ec='nvim ~/.etc/bash/config && reload'    # Edit config
-alias ef='nvim ~/.etc/bash/functions && reload' # Edit functions
-alias ev='nvim ~/.etc/env/vars && reload'       # Edit environments variables
 alias vim='nvim'
-alias vimconf='nvim ~/.etc/nvim/init.vim'
-alias v='nvim'
-alias fixvimspells='mkdir -p ~/.config/nvim/spell && curl "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl" -o ~/.config/nvim/spell/de.utf-8.spl && curl "http://ftp.vim.org/pub/vim/runtime/spell/pt.utf-8.spl" -o ~/.config/nvim/spell/pt.utf-8.spl'
-
-# List
-alias ls='ls -lahG'
-
-# Quicker cd
 alias c='cd'
-
-# Projects
 alias code='cd ~/Code'
 alias labs='cd ~/Labs'
 
@@ -35,15 +19,7 @@ alias gps='git push'
 alias gpr='git pull --rebase'
 alias gpm='git push origin $(git branch -l main master --format "%(refname:short)")'
 alias gs='git status'
-alias gcn!='git commit --amend --no-edit'
-alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
-alias ?='git status'
-alias eg='nvim .git/config'
-alias gbpurge='git fetch -p && git branch --merged | grep -v "\*" | grep -v "main" | grep -v "master" | grep -v "develop" | grep -v "staging" | xargs -n 1 git branch -d'
-alias updateall='find . -maxdepth 1 -type d -print -execdir git --git-dir={}/.git --work-tree=$PWD/{} pull origin $(git branch -l main master --format "%(refname:short)") --rebase \;'
-alias whodid='git shortlog --summary --numbered'
-alias reekit='git diff $(git branch -l main master --format "%(refname:short)") --name-only | xargs reek'
-alias latest-tag='git tag | sort -n -t "v" -k 2n'
+alias gcn='git commit --amend --no-edit'
 
 # Rails any version
 alias tld='tail -f log/development.log'
@@ -51,41 +27,6 @@ alias tlt='tail -f log/test.log'
 alias tlp='tail -f log/production.log'
 alias tl='tail -f log/*.log'
 
-# Migrations
-alias migrate='bundle exec rake db:migrate db:test:load'
-alias bx='bundle exec'
-alias tes='bundle exec rspec && bundle exec rubocop && bundle exec rails_best_practices && bundle-audit update && bundle-audit check'
-
 # Misc
-alias tlsys='tail -f /var/log/system.log'
-alias rmasl='sudo rm -rf /private/var/log/asl/*'
-alias o='open .'
-alias ff='open -a Firefox'
-alias up='docker-compose stop && rm tmp/pids/server.pid; docker-compose build web && docker-compose run web rails db:drop db:create db:schema:load db:seed && docker-compose up -d'
 alias simpleserver='php -S localhost:9999'
 alias rubocop='bundle exec rubocop'
-
-# docker
-alias start-docker='eval $(docker-machine env dev)'
-alias vmdockerssh='socat ~/Library/Containers/com.docker.docker/Data/vms/0/console.sock -,rawer'
-
-# tmuxinator
-alias mux='tmuxinator'
-
-# Hanami
-alias h='bundle exec hanami'
-
-# mailhog
-alias mailhog='docker run -p 1025:1025 -p 8025:8025 mailhog/mailhog'
-
-# rename
-alias renamejpg="rename -e 's/.*/$N.jpg/' *.jpg"
-
-# Rosetta brew
-alias rbrew='/usr/local/bin/brew'
-
-# Move files like "Metallica - One.gp3" to "Metallica/One.gp3"
-alias movetabs="rename -p 's| - |/|' *gp*"
-
-# iCloud cd
-alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'

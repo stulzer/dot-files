@@ -1,36 +1,3 @@
-# clear the ps1
-function ps1 {
-  PS1="\[$ESC[${DULL};${FG_GREEN}m\]\n\u:\[$ESC[${DULL};${FG_YELLOW}m\]$1 \$ \[$ESC[${DULL};${FG_WHITE};${BG_NULL}m\]"
-}
-
-rename_numerically () {
-  a=1
-  for i in *.jpg; do
-    new=$(printf "%01d.jpg" "$a") #04 pad to length of 4
-    mv -- "$i" "$new"
-    let a=a+1
-  done
-}
-
-# ssh autocomplete
-_complete_ssh_hosts () {
-  COMPREPLY=()
-  cur="${COMP_WORDS[COMP_CWORD]}"
-  comp_ssh_hosts=`cat ~/.ssh/known_hosts | \
-                  cut -f 1 -d ' ' | \
-                  sed -e s/,.*//g | \
-                  grep -v ^# | \
-                  uniq | \
-                  grep -v "\[" ;
-                  cat ~/.ssh/config | \
-                  grep "^Host " | \
-                  awk '{print $2}'`
-  COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
-  return 0
-}
-
-complete -F _complete_ssh_hosts ssh
-
 # Usage: changes d038ff1 5d7f017
 function changes() {
   git log $1..$2 --pretty=format:'*%s*%n%b' --no-merges
@@ -41,17 +8,6 @@ function rspec_last_commits() {
   current_branch="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/')"
   for hash in $(git log -$1 --pretty=format:"%h"); do git checkout $hash && bundle exec rspec; done
   git checkout $current_branch
-}
-
-function rr_last_commits() {
-  current_branch="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/')"
-  for hash in $(git log -$1 --pretty=format:"%h"); do git checkout $hash && bundle exec rspec && bundle exec rubocop; done
-  git checkout $current_branch
-}
-
-# kill all process with the grepped pattern
-function kill_em_all() {
-  ps -fax | grep -v grep | grep $1 | awk '{print $2}' | xargs kill -9
 }
 
 function wait_for_db() {
@@ -65,42 +21,3 @@ function wait_for_db() {
     sleep 1
   done
 }
-
-function first_match() {
-  pattern=$1
-  file=$2
-  cat $file | grep $pattern | sed -n -e 's/'$(echo $pattern)' //p' | head -n 1
-}
-
-function fix-docker-perms() {
-  sudo chown -R 1000:root $1
-}
-
-
-# Rails binstubs are back
-function rails_binstubs() {
-  # detecting rails & rake
-  if [[ -e bin/rails && -e bin/rake ]]
-    then
-    alias r='./bin/rails'
-    alias rake='./bin/rake'
-  else
-    alias r='bundle exec rails'
-    alias rake='bundle exec rake'
-  fi
-
-  # detecting bin yarn
-  if [[ -e bin/yarn ]]
-    then
-    alias yarn='./bin/yarn'
-  else
-    if alias yarn >/dev/null 2>&1
-      then
-      unalias yarn
-    fi
-  fi
-}
-
-rails_binstubs;
-
-function cd() { builtin cd "$@" && rails_binstubs; }
