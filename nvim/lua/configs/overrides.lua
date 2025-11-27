@@ -34,6 +34,7 @@ M.mason = {
     "typescript-language-server",
     "tailwindcss-language-server",
     "prettier",
+    "deno",
 
     -- ruby
     "erb-lint",

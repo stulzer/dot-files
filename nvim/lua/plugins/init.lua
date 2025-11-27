@@ -109,7 +109,7 @@ return {
         filetypes = {
           ["*"] = true,
         },
-        copilot_node_command = vim.fn.system("asdf where nodejs 22.0.0"):gsub("%s+", "") .. "/bin/node",
+        copilot_node_command = vim.fn.system("asdf where nodejs 25.2.1"):gsub("%s+", "") .. "/bin/node",
       }
     end,
   },
@@ -243,7 +243,7 @@ return {
       { "nvim-telescope/telescope.nvim" },
     },
     opts = {
-      model = "claude-sonnet-4",
+      model = "claude-sonnet-4.5",
       window = {
         layout = "float",
         relative = "cursor",
@@ -265,7 +265,7 @@ return {
       provider = "copilot",
       providers = {
         copilot = {
-          model = "claude-sonnet-4",
+          model = "claude-sonnet-4.5",
         },
         ollama = {
           model = "hf.co/mradermacher/CodeFuse-DeepSeek-33B-GGUF:Q4_K_M",
