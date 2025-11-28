@@ -1,71 +1,6 @@
 local overrides = require "configs.overrides"
--- Used with cmp configuration
--- local cmp = require "cmp"
 
 return {
-  -- ##############################
-  -- nvim-cmp old configuration begin
-  -- ##############################
-  -- {
-  --   "hrsh7th/nvim-cmp",
-  --   opts = {
-  --     mapping = {
-  --       -- Change tab behavior
-  --       ["<Tab>"] = function(callback)
-  --         if cmp.visible() then
-  --           cmp.confirm { select = true }
-  --         else
-  --           callback()
-  --         end
-  --       end,
-  --
-  --       -- Disabled Enter
-  --       ["<CR>"] = function(callback)
-  --         callback()
-  --       end,
-  --     },
-  --     sources = {
-  --       { name = "copilot", priority = 10 },
-  --       { name = "nvim_lsp", priority = 9 },
-  --       { name = "luasnip", priority = 5 },
-  --       { name = "path" },
-  --       { name = "buffer" },
-  --     },
-  --   },
-  -- },
-
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   event = "BufRead",
-  --   config = function()
-  --     require("copilot").setup {
-  --       suggestion = { enabled = false },
-  --       panel = { enabled = false },
-  --       filetypes = {
-  --         ["*"] = true,
-  --       },
-  --       copilot_node_command = vim.fn.system("asdf where nodejs 22.0.0"):gsub("%s+", "") .. "/bin/node",
-  --     }
-  --   end,
-  -- },
-
-  -- {
-  --   "zbirenbaum/copilot-cmp",
-  --   event = "InsertEnter",
-  --   config = function()
-  --     require("copilot_cmp").setup()
-  --   end,
-  -- },
-  -- ##############################
-  -- nvim-cmp old configuration end
-  -- ##############################
-  --
-
-  --
-  -- ##############################
-  -- experimenting with blink
-  -- ##############################
   {
     import = "nvchad.blink.lazyspec",
   },
@@ -73,10 +8,9 @@ return {
   {
     "saghen/blink.cmp",
     dependencies = { "Kaiser-Yang/blink-cmp-avante", "fang2hou/blink-copilot" },
-    -- dependencies = { "fang2hou/blink-copilot" },
     opts = {
       keymap = {
-        preset = "enter", -- whole preset is good except for enter :)
+        preset = "enter",
         ["<CR>"] = {},
         ["<Tab>"] = { "select_and_accept" },
       },
@@ -113,10 +47,6 @@ return {
       }
     end,
   },
-  --
-  -- ##############################
-  -- end of blink configuration
-  -- ##############################
 
   {
     "stevearc/conform.nvim",
@@ -156,7 +86,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- format & linting
       {
         "nvimtools/none-ls.nvim",
         config = function()
@@ -167,10 +96,9 @@ return {
     config = function()
       require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
+    end,
   },
 
-  -- override plugin configs
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,
@@ -259,10 +187,9 @@ return {
     enabled = true,
     event = "VeryLazy",
     lazy = false,
-    version = false, -- set this if you want to always pull the latest change
+    version = false,
     opts = {
-      -- provider = "copilot", -- or "ollama"
-      provider = "copilot",
+      provider = "ollama",
       providers = {
         copilot = {
           model = "claude-sonnet-4.5",
@@ -278,11 +205,11 @@ return {
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      "echasnovski/mini.pick", -- for file_selector provider mini.pick
-      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "ibhagwan/fzf-lua", -- for file_selector provider fzf
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      "echasnovski/mini.pick",
+      "nvim-telescope/telescope.nvim",
+      "ibhagwan/fzf-lua",
+      "nvim-tree/nvim-web-devicons",
+      "zbirenbaum/copilot.lua",
       {
         "HakonHarnes/img-clip.nvim",
         event = "VeryLazy",
@@ -305,69 +232,5 @@ return {
         ft = { "markdown", "Avante" },
       },
     },
-  },
-
-  {
-    "olimorris/codecompanion.nvim",
-    cmd = { "CodeCompanion" },
-    lazy = false,
-    dependencies = {
-      "ravitemer/mcphub.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("codecompanion").setup {
-        adapters = {
-          http = {
-            deepseek = function()
-              return require("codecompanion.adapters").extend("ollama", {
-                name = "CodeFuse-DeepSeek-33B-Q4_K_M",
-                schema = {
-                  model = {
-                    default = "hf.co/mradermacher/CodeFuse-DeepSeek-33B-GGUF:Q4_K_M",
-                  },
-                  num_ctx = {
-                    default = 16384,
-                  },
-                  num_predict = {
-                    default = -1,
-                  },
-                },
-              })
-            end,
-          },
-        },
-        extensions = {
-          mcphub = {
-            callback = "mcphub.extensions.codecompanion",
-            opts = {
-              make_vars = true,
-              make_slash_commands = true,
-              show_result_in_chat = true,
-            },
-          },
-        },
-        strategies = {
-          chat = {
-            adapter = "deepseek",
-            -- adapter = "copilot",
-          },
-          inline = {
-            adapter = "deepseek",
-            -- adapter = "copilot",
-          },
-          agent = {
-            adapter = "deepseek",
-            -- adapter = "copilot",
-          },
-        },
-        display = {
-          chat = {
-            show_settings = true,
-          },
-        },
-      }
-    end,
   },
 }
