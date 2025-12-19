@@ -1,20 +1,18 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "clangd" }
+local servers = { "html", "cssls", "clangd", "ts_ls" }
 
 -- Enable basic servers
 vim.lsp.enable(servers)
 
 -- Configure TypeScript LSP (only for projects with package.json)
-vim.lsp.config("ts_ls", {
-  root_dir = function(fname)
-    local util = require('lspconfig.util')
-    return util.root_pattern("package.json")(fname)
-  end,
-  single_file_support = false, -- Don't attach to single files without package.json
-})
-
-vim.lsp.enable("ts_ls")
+-- vim.lsp.config("ts_ls", {
+--   root_dir = function(fname)
+--     local util = require('lspconfig.util')
+--     return util.root_pattern("package.json")(fname)
+--   end,
+--   single_file_support = false, -- Don't attach to single files without package.json
+-- })
 
 -- Configure Deno LSP (only for projects with deno.json)
 vim.lsp.config("deno", {
