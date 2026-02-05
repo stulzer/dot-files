@@ -6,8 +6,8 @@
 local M = {}
 
 M.base46 = {
-  theme = "onenord",
-  theme_toggle = { "onenord", "onenord_light" },
+  theme = "solarized_dark",
+  theme_toggle = { "solarized_dark", "solarized_light" },
 }
 
 M.nvdash = { load_on_startup = false }
