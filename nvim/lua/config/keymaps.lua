@@ -1,34 +1,25 @@
-require "nvchad.mappings"
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
 
--- Show Rails Routes function used on <leader>cR below
 function ShowRoutes()
   -- Create a new buffer and set it up
-  vim.api.nvim_command ":topleft 100 :new __Routes__"
-  vim.api.nvim_command ":setlocal buftype=nofile"
-  vim.api.nvim_command ":setlocal bufhidden=wipe"
-  vim.api.nvim_command ":setlocal noswapfile"
+  vim.api.nvim_command(":topleft 100 :new __Routes__")
+  vim.api.nvim_command(":setlocal buftype=nofile")
+  vim.api.nvim_command(":setlocal bufhidden=wipe")
+  vim.api.nvim_command(":setlocal noswapfile")
 
   -- Run the rails routes command and populate the buffer
-  local output = vim.fn.systemlist "bundle exec rails routes"
+  local output = vim.fn.systemlist("bundle exec rails routes")
   vim.api.nvim_buf_set_lines(0, 0, -1, false, output)
 
   -- Adjust the window settings
-  vim.api.nvim_command ":exec 'normal! gg'"
-end
-
--- Rename file function used on <leader>rn below
-function RenameFile()
-  local old_name = vim.fn.expand "%"
-  local new_name = vim.fn.input("New name: ", old_name)
-  if new_name ~= old_name then
-    vim.fn.execute("saveas " .. new_name)
-    vim.fn.execute("silent !rm " .. old_name)
-  end
+  vim.api.nvim_command(":exec 'normal! gg'")
 end
 
 -- Pipes current buffer into jq to format json used on <leader>j below
 function FormatJSON()
-  vim.api.nvim_command "%! jq -S"
+  vim.api.nvim_command("%! jq -S")
 end
 
 -- Reads a .runner file on the root of the project and runs it as bash with && for each line as a command
@@ -38,7 +29,7 @@ function Runner()
     local file = io.open(runner, "r")
 
     if file == nil then
-      print "Error opening file"
+      print("Error opening file")
       return
     end
 
@@ -57,20 +48,19 @@ function Runner()
 
     file:close()
   else
-    print "No .runner file found"
+    print("No .runner file found")
   end
 end
 
 local map = vim.keymap.set
 
-map("n", "<leader>rn", "<cmd>lua RenameFile()<CR>", { desc = "Rename current buffer" })
 map("n", "<leader>cR", "<cmd>lua ShowRoutes()<CR>", { desc = "Show routes" })
 map("n", "<leader>j", "<cmd>lua FormatJSON()<CR>", { desc = "Formats current buffer in JSON via jq" })
 map("n", "<leader>R", "<cmd>lua Runner()<CR>", { desc = "Detect a .runner file and execute it" })
 map("n", "<C-p>", "<cmd> Telescope find_files <CR>", { desc = "Find files" })
 map(
   "n",
-  "<leader>cm",
+  "<leader>m",
   "<cmd>lua require 'telescope.builtin'.find_files{ cwd = 'app/models' } <CR>",
   { desc = "Find Models" }
 )
@@ -93,6 +83,7 @@ map("n", "<leader>tn", "<cmd>tabnext <CR>", { desc = "Next Native vim Tab" })
 map("n", "<leader>tp", "<cmd>tabprevious <CR>", { desc = "Previous Native vim Tab" })
 map("n", "<leader>w", "<cmd>w <CR>", { desc = "Save" })
 map("n", "<leader>a", "<cmd>wa <CR>", { desc = "Save All" })
+map("n", "<leader>x", "<cmd>bd<CR>", { desc = "Buffer Delete" })
 map("n", "<leader>s", "<cmd>VroomRunNearestTest <CR>", { desc = "Run Near Test" })
 map("n", "<leader>S", "<cmd>VroomRunTestFile <CR>", { desc = "Run Whole Test File" })
 map("n", "<leader>q", "<cmd>noh <CR>", { desc = "Clear Highlight" })
@@ -109,6 +100,9 @@ map("n", "+", "<C-a>", { desc = "Add to a number on the line" })
 map("n", "-", "<C-x>", { desc = "Subtract from a number on the line" })
 map("n", "_", "<C-x>", { desc = "Subtract from a number on the line" })
 map("n", "<C-x>", "<cmd>Inspect<CR>", { desc = "Show syntax stack" })
+map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle Tree" })
+map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Tab" })
+map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous Tab" })
 
 -- Visual mode mappings
 map("v", "L", "$", { desc = "Beginning of Line" })
@@ -119,20 +113,15 @@ map("v", "<leader>P", '"+P', { desc = "Paste above from system clipboard" })
 -- Command mode mappings
 map("c", "%%", "<C-R>=expand('%:h').'/'<cr>", { desc = "Show current file directory" })
 
--- Rewrite default to handle LSP timeouts
--- map("n", "<leader>fm", function()
---   require("conform").format { lsp_fallback = true, timeout_ms = 5000 }
--- end, { desc = "Format Files" })
-
 local function create_alternate_file()
   local success, err = pcall(function()
-    vim.api.nvim_command ":A"
+    vim.api.nvim_command(":A")
   end)
   if not success and err then
-    local file_path = err:match 'E345: Can\'t find file "([^"]+)" in path'
+    local file_path = err:match('E345: Can\'t find file "([^"]+)" in path')
     if file_path then
       vim.cmd("edit " .. file_path)
-      vim.cmd "write"
+      vim.cmd("write")
       print("Created file: " .. file_path)
     else
       print("Error: " .. err)

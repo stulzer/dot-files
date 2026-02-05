@@ -1,36 +1,44 @@
-local overrides = require "configs.overrides"
+-- since this is just an example spec, don't actually load anything here and return an empty spec
+-- stylua: ignore
+-- if true then return {} end
 
+-- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
+--
+-- In your plugin files, you can:
+-- * add extra plugins
+-- * disable/enabled LazyVim plugins
+-- * override the configuration of LazyVim plugins
 return {
   {
-    import = "nvchad.blink.lazyspec",
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = { enabled = false },
+    },
   },
 
   {
-    "saghen/blink.cmp",
-    dependencies = { "Kaiser-Yang/blink-cmp-avante", "fang2hou/blink-copilot" },
-    opts = {
-      keymap = {
-        preset = "enter",
-        ["<CR>"] = {},
-        ["<Tab>"] = { "select_and_accept" },
-      },
-      sources = {
-        default = { "copilot" },
-        providers = {
-          copilot = {
-            name = "copilot",
-            module = "blink-copilot",
-            score_offset = 100,
-            async = true,
-          },
-          avante = {
-            module = "blink-cmp-avante",
-            name = "Avante",
-          },
-        },
-      },
-    },
+    "folke/which-key.nvim",
+    config = function(_, opts)
+      local wk = require("which-key")
+      local del = vim.keymap.del
+
+      wk.setup(opts)
+
+      -- Delete top-level menu items here that you want to get overridden
+      del("n", "<leader>cm")
+    end
   },
+
+  {
+    "stulzer/vim-vroom",
+    branch = "develop",
+    ft = "ruby,javascript,typescript,typescriptreact",
+    config = function()
+      vim.g.vroom_use_terminal = 1
+    end,
+  },
+
+  { "rmehri01/onenord.nvim" },
 
   {
     "zbirenbaum/copilot.lua",
@@ -49,106 +57,13 @@ return {
   },
 
   {
-    "stevearc/conform.nvim",
-    config = function()
-      require "configs.conform"
-    end,
-  },
-
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "User FilePost",
-    opts = {
-      indent = { char = "│", highlight = "IblChar" },
-      scope = { char = "│", highlight = "IblScopeChar" },
-    },
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "blankline")
-
-      local hooks = require "ibl.hooks"
-      hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
-      local hl_group = "@ibl.scope.underline.1"
-      vim.api.nvim_set_hl(0, hl_group, { standout = true, underline = false })
-
-      require("ibl").setup(opts)
-
-      dofile(vim.g.base46_cache .. "blankline")
-    end,
-  },
-
-  {
     "nvim-tree/nvim-tree.lua",
     opts = {
       git = { enable = true },
     },
   },
 
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      {
-        "nvimtools/none-ls.nvim",
-        config = function()
-          require "configs.null-ls"
-        end,
-      },
-    },
-    config = function()
-      require("nvchad.configs.lspconfig").defaults()
-      require "configs.lspconfig"
-    end,
-  },
-
-  {
-    "williamboman/mason.nvim",
-    opts = overrides.mason,
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = overrides.treesitter,
-  },
-
-  {
-    "nvim-tree/nvim-tree.lua",
-    opts = overrides.nvimtree,
-  },
-
-  {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
-    end,
-  },
-
-  {
-    "FabijanZulj/blame.nvim",
-    config = function()
-      require("blame").setup()
-    end,
-    lazy = false,
-  },
-
   { "tpope/vim-rails", ft = "ruby" },
-
-  {
-    "kylechui/nvim-surround",
-    version = "*",
-    event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup {}
-    end,
-  },
-
-  {
-    "stulzer/vim-vroom",
-    branch = "develop",
-    ft = "ruby,javascript,typescript,typescriptreact",
-    config = function()
-      vim.g.vroom_use_terminal = 1
-    end,
-  },
 
   { "jremmen/vim-ripgrep", lazy = false },
 
@@ -183,54 +98,9 @@ return {
   },
 
   {
-    "yetone/avante.nvim",
-    enabled = true,
-    event = "VeryLazy",
-    lazy = false,
-    version = false,
+    "LazyVim/LazyVim",
     opts = {
-      provider = "ollama",
-      providers = {
-        copilot = {
-          model = "claude-sonnet-4.5",
-        },
-        ollama = {
-          model = "hf.co/mradermacher/CodeFuse-DeepSeek-33B-GGUF:Q4_K_M",
-        },
-      },
-    },
-    build = "make",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "echasnovski/mini.pick",
-      "nvim-telescope/telescope.nvim",
-      "ibhagwan/fzf-lua",
-      "nvim-tree/nvim-web-devicons",
-      "zbirenbaum/copilot.lua",
-      {
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            use_absolute_path = true,
-          },
-        },
-      },
-      {
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
+      colorscheme = "onenord",
     },
   },
 }
