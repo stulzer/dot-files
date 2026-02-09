@@ -103,6 +103,9 @@ map("n", "<C-x>", "<cmd>Inspect<CR>", { desc = "Show syntax stack" })
 map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle Tree" })
 map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Tab" })
 map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous Tab" })
+map("n", "<leader>fm", function()
+  require("conform").format({ lsp_fallback = true, timeout_ms = 5000 })
+end, { desc = "Format Files" })
 
 -- Visual mode mappings
 map("v", "L", "$", { desc = "Beginning of Line" })
