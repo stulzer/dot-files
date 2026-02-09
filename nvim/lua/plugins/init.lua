@@ -30,6 +30,37 @@ return {
   },
 
   {
+    "saghen/blink.cmp",
+    dependencies = { "Kaiser-Yang/blink-cmp-avante", "fang2hou/blink-copilot" },
+    opts = {
+      keymap = {
+        preset = "enter",
+        ["<CR>"] = {},
+        ["<Tab>"] = { "select_and_accept" },
+      },
+      sources = {
+        default = { "copilot" },
+        providers = {
+          copilot = {
+            name = "copilot",
+            module = "blink-copilot",
+            score_offset = 100,
+            async = true,
+          },
+        },
+      },
+    },
+  },
+
+  {
+    "kylechui/nvim-surround",
+    version = "*", event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup {}
+    end,
+  },
+
+  {
     "stulzer/vim-vroom",
     branch = "develop",
     ft = "ruby,javascript,typescript,typescriptreact",
