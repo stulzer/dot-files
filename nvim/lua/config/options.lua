@@ -44,7 +44,7 @@ vim.api.nvim_command("command! -bang Q q<bang>")
 vim.api.nvim_command("command! -bang QA qa<bang>")
 vim.api.nvim_command("command! -bang Qa qa<bang>")
 vim.api.nvim_command("command! -bang Bd bd<bang>")
-vim.api.nvim_command("command! Gblame BlameToggle window")
+vim.api.nvim_command("command! Gblame Gitsigns blame")
 
 -- CopilotChat short commands
 vim.api.nvim_command("command! CC CCOpen")
@@ -63,3 +63,6 @@ vim.api.nvim_command("command! CCToggle CopilotChatToggle")
 
 -- set no clipboard
 vim.opt.clipboard = ""
+
+-- do not autoformat on save
+vim.g.autoformat = false
