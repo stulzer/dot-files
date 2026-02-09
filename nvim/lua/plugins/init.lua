@@ -8,12 +8,20 @@
 -- * add extra plugins
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
+
 return {
   {
     "folke/snacks.nvim",
     opts = {
       dashboard = { enabled = false },
     },
+  },
+
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
   },
 
   {
@@ -26,7 +34,7 @@ return {
 
       -- Delete top-level menu items here that you want to get overridden
       del("n", "<leader>cm")
-    end
+    end,
   },
 
   {
@@ -54,9 +62,10 @@ return {
 
   {
     "kylechui/nvim-surround",
-    version = "*", event = "VeryLazy",
+    version = "*",
+    event = "VeryLazy",
     config = function()
-      require("nvim-surround").setup {}
+      require("nvim-surround").setup({})
     end,
   },
 
@@ -76,14 +85,14 @@ return {
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
-      require("copilot").setup {
+      require("copilot").setup({
         suggestion = { enabled = false },
         panel = { enabled = false },
         filetypes = {
           ["*"] = true,
         },
-        copilot_node_command = vim.fn.system("asdf where nodejs 25.2.1"):gsub("%s+", "") .. "/bin/node",
-      }
+        copilot_node_command = vim.fn.system("mise which --tool node@25.2.1 node"):gsub("%s+", '')
+      })
     end,
   },
 
@@ -131,7 +140,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onenord",
+      colorscheme = "tokyonight",
     },
   },
 }
