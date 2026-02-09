@@ -20,6 +20,7 @@ alias gpr='git pull --rebase'
 alias gpm='git push origin $(git branch -l main master --format "%(refname:short)")'
 alias gs='git status'
 alias gcn='git commit --amend --no-edit'
+alias gbpurge='git fetch -p && git branch --merged | grep -v "\*" | grep -v "main" | grep -v "master" | grep -v "develop" | grep -v "staging" | xargs -n 1 git branch -d'
 
 # Rails any version
 alias tld='tail -f log/development.log'
