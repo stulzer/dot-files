@@ -66,3 +66,6 @@ vim.opt.clipboard = ""
 
 -- do not autoformat on save
 vim.g.autoformat = false
+
+-- line wrapping
+vim.opt.wrap = true
