@@ -10,7 +10,7 @@ alias v='nvim'
 alias fixvimspells='mkdir -p ~/.config/nvim/spell && curl "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl" -o ~/.config/nvim/spell/de.utf-8.spl && curl "http://ftp.vim.org/pub/vim/runtime/spell/pt.utf-8.spl" -o ~/.config/nvim/spell/pt.utf-8.spl'
 
 # List
-alias ls='ls -lahG'
+alias ls='eza -lha --group-directories-first --icons=auto'
 
 # Quicker cd
 alias c='cd'
