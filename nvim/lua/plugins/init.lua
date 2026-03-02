@@ -78,13 +78,28 @@ return {
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
+      local function get_node_path()
+        local cmd
+        if vim.fn.has("mac") == 1 then
+          cmd = "asdf where nodejs 25.2.1"
+        else
+          cmd = "mise where node@25.2.1"
+        end
+        local result = vim.fn.system(cmd)
+        if vim.v.shell_error ~= 0 then
+          vim.notify("copilot: failed to resolve node path via: " .. cmd, vim.log.levels.WARN)
+          return "node" -- fallback to PATH
+        end
+        return vim.trim(result) .. "/bin/node"
+      end
+
       require("copilot").setup {
         suggestion = { enabled = false },
         panel = { enabled = false },
         filetypes = {
           ["*"] = true,
         },
-        copilot_node_command = vim.fn.system("asdf where nodejs 25.2.1"):gsub("%s+", "") .. "/bin/node",
+        copilot_node_command = get_node_path(),
       }
     end,
   },
@@ -119,7 +134,7 @@ return {
       { "nvim-telescope/telescope.nvim" },
     },
     opts = {
-      model = "claude-opus-4.6",
+      model = "claude-sonnet-4.5",
       window = {
         layout = "float",
         relative = "cursor",
