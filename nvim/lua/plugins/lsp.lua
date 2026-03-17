@@ -9,6 +9,14 @@ return {
         clangd = {},
         ts_ls = {},
 
+        ruby_lsp = {
+          cmd = { "bundle", "exec", "ruby-lsp" },
+          init_options = {
+            formatter = "rubocop",
+            linters = { "rubocop" },
+          },
+        },
+
         -- Deno LSP (only for projects with deno.json)
         denols = {
           root_dir = function(fname)

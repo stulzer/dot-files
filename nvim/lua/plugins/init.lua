@@ -142,6 +142,11 @@ return {
         height = 0.4,
         row = 1,
       },
+      prompts = {
+        Commit = {
+          prompt = "Write commit message for the change with commitizen convention. Keep the title under 50 characters and wrap message at 72 characters. Format as a gitcommit code block. Use backticks for all file and code related changes."
+        },
+      },
     },
   },
 
