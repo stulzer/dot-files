@@ -42,3 +42,4 @@ bin/deploy
 .solargraph.yml
 
 .yarn/
+.claude/settings.local.json
