@@ -86,11 +86,11 @@ export GIT_PS1_SHOWUPSTREAM=auto
 # 
 
 function ruby_version() {
-  asdf current ruby | awk '/[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}/{ print $2 }'
+  ruby -v | awk '/[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}/{ print $2 }'
 }
 
 function node_version() {
-  asdf current nodejs | awk '/[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}/{ print $2 }'
+  node -v | cut -c2-
 }
 
 PS1="$BRIGHT_BLUE\w$BRIGHT_GREEN $(echo ) \$(node_version)$BRIGHT_RED $(echo ) \$(ruby_version)$BRIGHT_YELLOW \$(__git_ps1 '$(echo ) %s ') \n${BRIGHT_RED} $RESET"

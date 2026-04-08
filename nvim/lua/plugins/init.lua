@@ -83,7 +83,7 @@ return {
         if vim.fn.has("mac") == 1 then
           cmd = "asdf where nodejs 25.2.1"
         else
-          cmd = "mise where node@25.2.1"
+          cmd = "mise where node@25.9.0"
         end
         local result = vim.fn.system(cmd)
         if vim.v.shell_error ~= 0 then
