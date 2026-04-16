@@ -10,7 +10,7 @@ alias v='nvim'
 alias fixvimspells='mkdir -p ~/.config/nvim/spell && curl "http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl" -o ~/.config/nvim/spell/de.utf-8.spl && curl "http://ftp.vim.org/pub/vim/runtime/spell/pt.utf-8.spl" -o ~/.config/nvim/spell/pt.utf-8.spl'
 
 # List
-alias ls='ls -lahG'
+alias ls='eza --icons -lah'
 
 # Quicker cd
 alias c='cd'
@@ -59,7 +59,7 @@ alias tes='bundle exec rspec && bundle exec rubocop && bundle exec rails_best_pr
 # Misc
 alias tlsys='tail -f /var/log/system.log'
 alias rmasl='sudo rm -rf /private/var/log/asl/*'
-alias open='dolphin'
+alias open='nautilus'
 alias o='open .'
 alias simpleserver='php -S localhost:9999'
 alias rubocop='bundle exec rubocop'

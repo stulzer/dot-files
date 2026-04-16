@@ -64,7 +64,7 @@ return {
 
   {
     "stulzer/vim-vroom",
-    branch = "develop",
+    branch = "lua-rewrite",
     ft = "ruby,javascript,typescript,typescriptreact",
     config = function()
       vim.g.vroom_use_terminal = 1
