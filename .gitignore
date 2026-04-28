@@ -1,3 +1,4 @@
 env/vars
 bash/create_gitlab_release_tag
 certs/
+ssh/config
