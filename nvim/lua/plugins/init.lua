@@ -62,13 +62,17 @@ return {
 
   { "folke/flash.nvim", enabled = false },
 
-  {
+{
     "stulzer/vim-vroom",
     branch = "lua-rewrite",
     ft = "ruby,javascript,typescript,typescriptreact",
-    config = function()
-      vim.g.vroom_use_terminal = 1
-    end,
+    cmd = { "VroomRunTestFile", "VroomRunNearestTest", "VroomRunLastTest" },
+    keys = {
+      { "<Leader>S", "<cmd>VroomRunTestFile<cr>", desc = "Run test file" },
+      { "<Leader>s", "<cmd>VroomRunNearestTest<cr>", desc = "Run nearest test" },
+      { "<Leader>l", "<cmd>VroomRunLastTest<cr>", desc = "Run last test" },
+    },
+    opts = {},
   },
 
   { "rmehri01/onenord.nvim" },
