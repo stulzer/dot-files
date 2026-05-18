@@ -10,7 +10,8 @@ return {
         ts_ls = {},
 
         ruby_lsp = {
-          cmd = { "bundle", "exec", "ruby-lsp" },
+          mason = false,
+          cmd = { "mise", "x", "--", "ruby-lsp" },
           init_options = {
             formatter = "rubocop",
             linters = { "rubocop" },
