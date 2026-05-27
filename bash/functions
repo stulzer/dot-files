@@ -31,6 +31,47 @@ _complete_ssh_hosts () {
 
 complete -F _complete_ssh_hosts ssh
 
+# Rename files & folders whose names contain OLD, replacing OLD with NEW.
+# Usage: bulk_rename [-n|--dry-run] OLD NEW [DIR]   (DIR defaults to .)
+# eg: bulk_rename ASANA_REBEL_ AR_
+bulk_rename() {
+  local dry=0
+  while [[ "$1" == -* ]]; do
+    case "$1" in
+      -n|--dry-run) dry=1 ;;
+      -h|--help)
+        printf 'Usage: bulk_rename [-n|--dry-run] OLD NEW [DIR]\n'
+        printf '  Renames files & folders under DIR (default .) replacing OLD with NEW.\n'
+        return 0 ;;
+      --) shift; break ;;
+      *) printf 'bulk_rename: unknown option %s\n' "$1" >&2; return 2 ;;
+    esac
+    shift
+  done
+
+  local old=$1 new=$2 dir=${3:-.}
+  if [[ -z "$old" || -z "$new" ]]; then
+    printf 'Usage: bulk_rename [-n|--dry-run] OLD NEW [DIR]\n' >&2
+    return 2
+  fi
+
+  local n=0 path base parent target
+  # -depth renames a folder's contents before the folder itself, so paths stay valid
+  while IFS= read -r path; do
+    base=${path##*/}; parent=${path%/*}; target=$parent/${base/"$old"/"$new"}
+    [[ "$path" == "$target" ]] && continue
+    if (( dry )); then
+      printf 'DRY-RUN  %s  ->  %s\n' "$path" "$target"
+    else
+      mv "$path" "$target" && printf 'renamed  %s  ->  %s\n' "$path" "$target"
+    fi
+    n=$((n+1))
+  done < <(find "$dir" -depth -name "*$old*")
+
+  (( dry )) && printf '[dry-run] %d item(s) would be renamed\n' "$n" \
+            || printf '%d item(s) renamed\n' "$n"
+}
+
 # Usage: changes d038ff1 5d7f017
 function changes() {
   git log $1..$2 --pretty=format:'*%s*%n%b' --no-merges
