@@ -3,7 +3,3 @@
 # Edit freely. Regenerate with: ai-jail --clean --init
 
 command = ["claude"]
-rw_maps = []
-ro_maps = []
-hide_dotdirs = []
-allow_tcp_ports = []
