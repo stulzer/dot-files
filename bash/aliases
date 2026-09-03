@@ -89,3 +89,6 @@ alias movetabs="rename -p 's| - |/|' *gp*"
 
 # iCloud cd
 alias icloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
+
+# Update all claude plugins
+alias claude-update-plugins='claude plugin list --json | jq -r '.[].id' | xargs -n1 claude plugin update'
