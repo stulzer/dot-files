@@ -138,7 +138,7 @@ return {
       { "nvim-telescope/telescope.nvim" },
     },
     opts = {
-      model = "claude-sonnet-4.5",
+      model = "claude-sonnet-5",
       window = {
         layout = "float",
         relative = "cursor",
