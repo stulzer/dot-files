@@ -43,3 +43,5 @@ bin/deploy
 
 .yarn/
 .claude/settings.local.json
+
+**/.claude/.cc-writes/
